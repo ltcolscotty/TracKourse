@@ -4,39 +4,44 @@ import zipfile
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 
+
 def get_latest_chromedriver_version():
     url = "https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json"
     response = requests.get(url)
     data = response.json()
-    return data['channels']['Stable']['version']
+    return data["channels"]["Stable"]["version"]
+
 
 def download_chromedriver(version, destination_folder):
     base_url = f"https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/{version}"
-    if os.name == 'nt':  # Windows
+    if os.name == "nt":  # Windows
         driver_url = f"{base_url}/win64/chromedriver-win64.zip"
-    elif os.name == 'posix':  # macOS or Linux
+    elif os.name == "posix":  # macOS or Linux
         driver_url = f"{base_url}/mac-x64/chromedriver-mac-x64.zip"
     else:
         raise OSError("Unsupported operating system")
 
     response = requests.get(driver_url)
     zip_path = os.path.join(destination_folder, "chromedriver.zip")
-    with open(zip_path, 'wb') as f:
+    with open(zip_path, "wb") as f:
         f.write(response.content)
-    
+
     return zip_path
 
+
 def unzip_file(zip_path, extract_path):
-    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+    with zipfile.ZipFile(zip_path, "r") as zip_ref:
         zip_ref.extractall(extract_path)
 
+
 def get_chromedriver_path(driver_path):
-    if os.name == 'nt':  # Windows
+    if os.name == "nt":  # Windows
         return os.path.join(driver_path, "chromedriver-win64", "chromedriver.exe")
-    elif os.name == 'posix':  # macOS or Linux
+    elif os.name == "posix":  # macOS or Linux
         return os.path.join(driver_path, "chromedriver-mac-x64", "chromedriver")
     else:
         raise OSError("Unsupported operating system")
+
 
 def setup_chromedriver():
     # Get the current directory
@@ -63,6 +68,7 @@ def setup_chromedriver():
 
     return chromedriver_path
 
+
 def main():
     chromedriver_path = setup_chromedriver()
 
@@ -73,8 +79,9 @@ def main():
     with webdriver.Chrome(service=service) as driver:
         driver.get("https://www.asu.edu")
         assert "ASU Homepage" in driver.title, "Unexpected page title"
-        
+
     print("Browser session completed and closed. Test successful.")
+
 
 if __name__ == "__main__":
     main()
