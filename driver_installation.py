@@ -6,6 +6,11 @@ from selenium.webdriver.chrome.service import Service
 
 
 def get_latest_chromedriver_version():
+    """Looks for the latest chromedriver version
+
+    Returns:
+        String: latest version
+    """
     url = "https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json"
     response = requests.get(url)
     data = response.json()
@@ -13,6 +18,15 @@ def get_latest_chromedriver_version():
 
 
 def download_chromedriver(version, destination_folder):
+    """Handles downloading the file into a folder for unzipping
+
+    Args:
+        String: Version
+        String: Destination folder
+    
+    Returns:
+        os.path: path to zip file
+    """
     base_url = f"https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/{version}"
     if os.name == "nt":  # Windows
         driver_url = f"{base_url}/win64/chromedriver-win64.zip"
@@ -30,11 +44,22 @@ def download_chromedriver(version, destination_folder):
 
 
 def unzip_file(zip_path, extract_path):
+    """Handles unpacking of zip file
+    Args:
+        os.path: zip file path
+        os.path: extract path
+    """
     with zipfile.ZipFile(zip_path, "r") as zip_ref:
         zip_ref.extractall(extract_path)
 
 
 def get_chromedriver_path(driver_path):
+    """Determines operating system
+    Args:
+        os.path: base path
+    Returns:
+        os.path: location of chrome driver
+    """
     if os.name == "nt":  # Windows
         return os.path.join(driver_path, "chromedriver-win64", "chromedriver.exe")
     elif os.name == "posix":  # macOS or Linux
@@ -44,6 +69,10 @@ def get_chromedriver_path(driver_path):
 
 
 def setup_chromedriver():
+    """Installs chrome driver for selenium into driver/
+    Returns:
+        os.path: path to downloaded chrome driver
+    """
     # Get the current directory
     current_dir = os.path.dirname(os.path.abspath(__file__))
 
