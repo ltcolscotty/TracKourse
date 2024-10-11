@@ -37,7 +37,7 @@ class class_info:
             self.id = id_list
         else:
             self.has_id = False
-            self.id = None
+            self.id = []
 
         try:
             if start is None:
