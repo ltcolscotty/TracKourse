@@ -1,3 +1,7 @@
+"""
+if ID is not entered in, all options should be scanned
+"""
+
 from datetime import datetime
 
 
