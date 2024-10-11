@@ -11,5 +11,5 @@ class_list = [
     class_info("CSE", "240", "C", ["David Claveau", "James Gordon", "Justin Selgrad"], "Tempe", "9:00AM", "5:00PM"),
     class_info("PHI", "105", "C", ["Douglas Portmore"], "Tempe", "9:00AM", "5:00PM", id_list=["12551"]),
     class_info("CON", "101", "C", ["Anthony Lamanna"], "Tempe", "9:00AM", "5:00PM", id_list=["11027"]),
-    class_info("GCU", "102", "C", ["Lara Shinsato"], "iCourse", "9:00AM", "5:00PM", id_list=["18113"])
+    class_info("GRK", "142", "C", ["Sarah Bolmarcich"], "iCourse", "9:00AM", "5:00PM", id_list=["13837"])
               ]
