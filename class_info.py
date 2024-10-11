@@ -54,7 +54,7 @@ class class_info:
             if start is None:
                 self.end = convert_time("11:59PM")
             else:
-                self.end = convert_time(start)
+                self.end = convert_time(end)
         except ValueError:
             print(
                 f"Invalid end time input {self.fullcode}, setting to default: 11:59PM"
