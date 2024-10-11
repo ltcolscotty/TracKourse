@@ -17,7 +17,7 @@ class class_info:
         end: str = None,
         honors: bool = False,
         required: bool = True,
-        id: str = None,
+        id_list: list[str] = None,
     ):
         self.subj = subj.upper()
         self.nbr = nbr
@@ -30,7 +30,7 @@ class class_info:
 
         if id is not None:
             self.has_id = True
-            self.id = id
+            self.id = id_list
         else:
             self.has_id = False
             self.id = None
