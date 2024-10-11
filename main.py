@@ -8,7 +8,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 
-from driver_installation_methods import get_chromedriver_path
+from nonmodify.driver_installation_methods import get_chromedriver_path
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 driver_path = os.path.join(current_dir, "driver")

@@ -1,4 +1,4 @@
-from class_info import class_info
+from nonmodify.class_info import class_info
 """
 FORMAT:
 class_info(subj, nbr, session, professor_list, location, start, end, honors)
