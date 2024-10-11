@@ -17,7 +17,4 @@ LOGIN_PASSWORD=''
 EMAIL_USER=''
 EMAIL_PASSWORD=''
 TARGET_EMAIL=''
-
-CLASSES=["CLASS_CODES"]
-CLASS_DICT={"class_code", "professor"}
 ```
