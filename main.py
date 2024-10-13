@@ -48,12 +48,3 @@ with webdriver.Chrome(service=Service(chromedriver_path)) as driver:
 
     except TimeoutException:
         print("Timed out waiting for page elements to load")
-
-    # Find all elements on the page
-    all_elements = driver.find_elements(By.XPATH, "//*")
-    # Print details of each element
-    # REMOVE ONCE DONE WITH PROGRAMMING
-    for element in all_elements:
-        print(
-            f"Tag: {element.tag_name}, ID: {element.get_attribute('id')}, Class: {element.get_attribute('class')}"
-        )
