@@ -19,6 +19,8 @@ def scan_boxes(driver):
             EC.presence_of_element_located((By.ID, "class-results"))
         )
 
+        print("class results loaded detected")
+
         # Find the container with class information
         class_results = driver.find_element(By.ID, "class-results")
 

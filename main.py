@@ -10,6 +10,8 @@ from selenium.common.exceptions import TimeoutException
 
 from nonmodify.driver_installation_methods import get_chromedriver_path
 
+import nonmodify.web_info as wi
+
 current_dir = os.path.dirname(os.path.abspath(__file__))
 driver_path = os.path.join(current_dir, "driver")
 chromedriver_path = get_chromedriver_path(driver_path)
@@ -41,10 +43,10 @@ with webdriver.Chrome(service=Service(chromedriver_path)) as driver:
         )
         search_button_element.click()
 
-        # Wait for search results to load (adjust the condition as needed)
-        WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.CLASS_NAME, "search-results"))
-        )
+        test_output = wi.scan_boxes(driver)
+        print(test_output)
+        aggregated_output = wi.agg_data(test_output)
+        print(aggregated_output)
 
     except TimeoutException:
-        print("Timed out waiting for page elements to load")
+        print("Timed out waiting for page elements to load (Outer)")
