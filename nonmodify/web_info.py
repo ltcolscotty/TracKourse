@@ -54,9 +54,50 @@ def scan_boxes(driver):
         return ""
 
 
-def agg_data():
-    """Process one box input into an analyzable dataform"""
-    pass
+def agg_data(page_data):
+    """Process box input into an analyzable dataform"""
+    classes = []
+    current_class = {}
+    in_class_section = False
+
+    lines = page_data.split("\n")
+    for line in lines:
+        if "Results for MAT 267" in line:
+            in_class_section = True
+            continue
+
+        if in_class_section:
+            if line.startswith("MAT 267"):
+                if current_class:
+                    classes.append(current_class)
+                current_class = {"name": line.strip()}
+            elif line.strip().isdigit():
+                current_class["number"] = line.strip()
+            elif "Syllabus" in line:
+                current_class["has_syllabus"] = True
+            elif any(day in line for day in ["M", "T", "W", "Th", "F"]):
+                current_class["schedule"] = line.strip()
+            elif "AM" in line or "PM" in line:
+                current_class["time"] = line.strip()
+            elif (
+                "Tempe" in line
+                or "Poly" in line
+                or "ASU Online" in line
+                or "iCourse" in line
+            ):
+                current_class["location"] = line.strip()
+            elif "open seats" in line:
+                current_class["seats"] = line.strip()
+            elif "Maroon" in line:
+                current_class["type"] = line.strip()
+
+            if "ASU Class Search and Course Catalog Search" in line:
+                in_class_section = False
+                if current_class:
+                    classes.append(current_class)
+                break
+
+    return classes
 
 
 def next_page(driver, timeout=10):
