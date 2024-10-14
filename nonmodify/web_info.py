@@ -3,7 +3,11 @@ import re
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
+from selenium.common.exceptions import (
+    TimeoutException,
+    NoSuchElementException,
+    StaleElementReferenceException,
+)
 
 
 def access_page(driver):
@@ -160,28 +164,45 @@ def next_page(driver, timeout=10):
         return False
 
 
-def print_all_elements(driver):
-    # Wait for the page to load
-    WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.TAG_NAME, "body"))
-    )
+def print_all_elements(driver, timeout=10, file="resultsTesting.txt"):
+    try:
+        # Wait for a specific element that indicates the page is loaded
+        WebDriverWait(driver, timeout).until(
+            EC.presence_of_element_located((By.ID, "class-results"))
+        )
 
-    # Find all elements on the page
-    all_elements = driver.find_elements(By.XPATH, "//*")
+        # Wait an additional 2 seconds for any dynamic content to load
+        driver.implicitly_wait(2)
 
-    # Print information about each element
-    for index, element in enumerate(all_elements, start=1):
-        try:
-            tag_name = element.tag_name
-            element_id = element.get_attribute("id")
-            element_class = element.get_attribute("class")
-            element_text = element.text.replace("\n", " ")[:50]  # Truncate long text
+        # Find all elements on the page
+        all_elements = driver.find_elements(By.XPATH, "//*")
 
-            print(f"Element {index}:")
-            print(f"  Tag: {tag_name}")
-            print(f"  ID: {element_id or 'N/A'}")
-            print(f"  Class: {element_class or 'N/A'}")
-            print(f"  Text: {element_text or 'N/A'}")
-            print()
-        except Exception as e:
-            print(f"Error processing element {index}: {str(e)}")
+        with open(file, "w", encoding="utf-8") as file:
+            file.write(f"Total elements found: {len(all_elements)}\n\n")
+
+            for index, element in enumerate(all_elements, start=1):
+                try:
+                    tag_name = element.tag_name
+                    element_id = element.get_attribute("id") or "N/A"
+                    element_class = element.get_attribute("class") or "N/A"
+                    element_text = element.text.replace("\n", " ")[
+                        :50
+                    ]  # Truncate long text
+
+                    file.write(f"Element {index}:\n")
+                    file.write(f"  Tag: {tag_name}\n")
+                    file.write(f"  ID: {element_id}\n")
+                    file.write(f"  Class: {element_class}\n")
+                    file.write(f"  Text: {element_text}\n")
+                    file.write("\n")
+                except StaleElementReferenceException:
+                    file.write(f"Element {index}: Stale element, skipping\n\n")
+                except Exception as e:
+                    file.write(f"Error processing element {index}: {str(e)}\n\n")
+
+        print(f"Results have been saved to {file}")
+
+    except TimeoutException:
+        print(f"Timed out waiting for page elements to load after {timeout} seconds")
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")

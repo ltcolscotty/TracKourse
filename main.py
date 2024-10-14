@@ -43,14 +43,7 @@ with webdriver.Chrome(service=Service(chromedriver_path)) as driver:
         )
         search_button_element.click()
 
-        test_output = wi.scan_boxes(driver)
-        print(test_output)
-        aggregated_output = wi.agg_data(test_output)
-        print(aggregated_output)
-        wi.next_page(driver)
-        test_output = wi.scan_boxes(driver)
-        print(test_output)
-        aggregated_output = wi.agg_data(test_output)
+        wi.print_all_elements(driver)
 
     except TimeoutException:
         print("Timed out waiting for page elements to load (Outer)")
