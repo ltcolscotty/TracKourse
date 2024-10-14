@@ -26,7 +26,7 @@ with webdriver.Chrome(service=Service(chromedriver_path)) as driver:
             EC.element_to_be_clickable((By.ID, "catalogNbr"))
         )
         input_number_element.clear()
-        input_number_element.send_keys("267")
+        input_number_element.send_keys("102")
 
         # Wait for and interact with the subject input
         input_class_element = WebDriverWait(driver, 10).until(
@@ -35,7 +35,7 @@ with webdriver.Chrome(service=Service(chromedriver_path)) as driver:
             )
         )
         input_class_element.clear()
-        input_class_element.send_keys("MAT")
+        input_class_element.send_keys("ENG")
 
         # Wait for the search button to be clickable
         search_button_element = WebDriverWait(driver, 10).until(
@@ -47,6 +47,10 @@ with webdriver.Chrome(service=Service(chromedriver_path)) as driver:
         print(test_output)
         aggregated_output = wi.agg_data(test_output)
         print(aggregated_output)
+        wi.next_page(driver)
+        test_output = wi.scan_boxes(driver)
+        print(test_output)
+        aggregated_output = wi.agg_data(test_output)
 
     except TimeoutException:
         print("Timed out waiting for page elements to load (Outer)")
