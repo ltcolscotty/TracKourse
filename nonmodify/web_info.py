@@ -158,3 +158,30 @@ def next_page(driver, timeout=10):
     except NoSuchElementException:
         print("Pagination element not found.")
         return False
+
+
+def print_all_elements(driver):
+    # Wait for the page to load
+    WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.TAG_NAME, "body"))
+    )
+
+    # Find all elements on the page
+    all_elements = driver.find_elements(By.XPATH, "//*")
+
+    # Print information about each element
+    for index, element in enumerate(all_elements, start=1):
+        try:
+            tag_name = element.tag_name
+            element_id = element.get_attribute("id")
+            element_class = element.get_attribute("class")
+            element_text = element.text.replace("\n", " ")[:50]  # Truncate long text
+
+            print(f"Element {index}:")
+            print(f"  Tag: {tag_name}")
+            print(f"  ID: {element_id or 'N/A'}")
+            print(f"  Class: {element_class or 'N/A'}")
+            print(f"  Text: {element_text or 'N/A'}")
+            print()
+        except Exception as e:
+            print(f"Error processing element {index}: {str(e)}")
