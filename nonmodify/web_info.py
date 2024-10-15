@@ -1,4 +1,5 @@
 import re
+import time
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -164,20 +165,20 @@ def next_page(driver, timeout=10):
         return False
 
 
-def print_all_elements(driver, timeout=10, file="resultsTesting.txt"):
+def all_elements(driver, timeout=10, file_name="webpage_elements.txt"):
     try:
-        # Wait for a specific element that indicates the page is loaded
         WebDriverWait(driver, timeout).until(
             EC.presence_of_element_located((By.ID, "class-results"))
         )
 
-        # Wait an additional 2 seconds for any dynamic content to load
-        driver.implicitly_wait(2)
+        """WebDriverWait(driver, timeout).until(
+            EC.presence_of_element_located((By.XPATH, "//*[contains(text(), 'Next')]"))
+        )"""
 
         # Find all elements on the page
         all_elements = driver.find_elements(By.XPATH, "//*")
 
-        with open(file, "w", encoding="utf-8") as file:
+        with open(file_name, "w", encoding="utf-8") as file:
             file.write(f"Total elements found: {len(all_elements)}\n\n")
 
             for index, element in enumerate(all_elements, start=1):
@@ -200,9 +201,11 @@ def print_all_elements(driver, timeout=10, file="resultsTesting.txt"):
                 except Exception as e:
                     file.write(f"Error processing element {index}: {str(e)}\n\n")
 
-        print(f"Results have been saved to {file}")
+        print(f"Results have been saved to {file_name}")
 
     except TimeoutException:
-        print(f"Timed out waiting for page elements to load after {timeout} seconds")
+        print(
+            f"Timed out waiting for 'loading...' text to disappear after {timeout} seconds"
+        )
     except Exception as e:
         print(f"An error occurred: {str(e)}")

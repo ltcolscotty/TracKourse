@@ -1,4 +1,4 @@
-Total elements found: 4589
+Total elements found: 4602
 
 Element 1:
   Tag: html
@@ -261,7 +261,7 @@ Element 43:
 Element 44:
   Tag: header
   ID: asuHeader
-  Class: sc-kpDqfm IGZXJ
+  Class: sc-kpDqfm IGZXJ scrolled
   Text: Class Search
 
 Element 45:
@@ -884,7 +884,7 @@ Element 147:
 
 Element 148:
   Tag: title
-  ID: svg-inline--fa-title-JCuGjCN7wrfE
+  ID: svg-inline--fa-title-mKHpMmcdWFnk
   Class: N/A
   Text: Banner
 
@@ -1064,7 +1064,7 @@ Element 177:
 
 Element 178:
   Tag: button
-  ID: react-aria6974981291-1
+  ID: react-aria6502327165-1
   Class: custom-dropdown-toggle  btn active btn-sort
   Text: Sort by: Course A-Z
 
@@ -1142,7 +1142,7 @@ Element 190:
 
 Element 191:
   Tag: button
-  ID: react-aria6974981291-2
+  ID: react-aria6502327165-2
   Class: custom-dropdown-toggle btn btn-filter
   Text: Location
 
@@ -1190,7 +1190,7 @@ Element 198:
 
 Element 199:
   Tag: button
-  ID: react-aria6974981291-3
+  ID: react-aria6502327165-3
   Class: custom-dropdown-toggle btn btn-filter
   Text: Level
 
@@ -1238,7 +1238,7 @@ Element 206:
 
 Element 207:
   Tag: button
-  ID: react-aria6974981291-4
+  ID: react-aria6502327165-4
   Class: custom-dropdown-toggle btn btn-filter
   Text: Session
 
@@ -27306,217 +27306,307 @@ Element 4551:
   Class: col
   Text: Prev 1 2 3 Next
 
-Element 4552: Stale element, skipping
+Element 4552:
+  Tag: div
+  ID: N/A
+  Class: N/A
+  Text: Prev 1 2 3 Next
 
-Element 4553: Stale element, skipping
+Element 4553:
+  Tag: div
+  ID: N/A
+  Class: container
+  Text: Prev 1 2 3 Next
 
-Element 4554: Stale element, skipping
+Element 4554:
+  Tag: div
+  ID: N/A
+  Class: row
+  Text: Prev 1 2 3 Next
 
 Element 4555:
+  Tag: div
+  ID: N/A
+  Class: col-12 d-flex justify-content-center
+  Text: Prev 1 2 3 Next
+
+Element 4556:
+  Tag: nav
+  ID: N/A
+  Class: N/A
+  Text: Prev 1 2 3 Next
+
+Element 4557:
+  Tag: ul
+  ID: N/A
+  Class: pagination
+  Text: Prev 1 2 3 Next
+
+Element 4558:
+  Tag: li
+  ID: N/A
+  Class: page-item disabled
+  Text: Prev
+
+Element 4559:
+  Tag: a
+  ID: N/A
+  Class: page-link page-link-icon
+  Text: Prev
+
+Element 4560:
+  Tag: li
+  ID: N/A
+  Class: page-item active
+  Text: 1
+
+Element 4561:
+  Tag: a
+  ID: N/A
+  Class: page-link
+  Text: 1
+
+Element 4562:
+  Tag: li
+  ID: N/A
+  Class: page-item 
+  Text: 2
+
+Element 4563:
+  Tag: a
+  ID: N/A
+  Class: page-link
+  Text: 2
+
+Element 4564:
+  Tag: li
+  ID: N/A
+  Class: page-item 
+  Text: 3
+
+Element 4565:
+  Tag: a
+  ID: N/A
+  Class: page-link
+  Text: 3
+
+Element 4566:
+  Tag: li
+  ID: N/A
+  Class: page-item 
+  Text: Next
+
+Element 4567:
+  Tag: a
+  ID: N/A
+  Class: page-link page-link-icon
+  Text: Next
+
+Element 4568:
   Tag: div
   ID: N/A
   Class: sc-aXZVg dbyaOW app-footer
   Text: ASU Class Search and Course Catalog Search Send Fe
 
-Element 4556:
+Element 4569:
   Tag: div
   ID: feedback-section
   Class: N/A
   Text: ASU Class Search and Course Catalog Search Send Fe
 
-Element 4557:
+Element 4570:
   Tag: div
   ID: N/A
   Class: container
   Text: ASU Class Search and Course Catalog Search Send Fe
 
-Element 4558:
+Element 4571:
   Tag: div
   ID: N/A
   Class: row pt-5
   Text: ASU Class Search and Course Catalog Search Send Fe
 
-Element 4559:
+Element 4572:
   Tag: div
   ID: N/A
   Class: col-sm-2
   Text: ASU Class Search and Course Catalog Search Send Fe
 
-Element 4560:
+Element 4573:
   Tag: p
   ID: N/A
   Class: N/A
   Text: ASU Class Search and Course Catalog Search
 
-Element 4561:
+Element 4574:
   Tag: a
   ID: N/A
   Class: btn btn-md btn-maroon
   Text: Send Feedback
 
-Element 4562:
+Element 4575:
   Tag: footer
   ID: N/A
   Class: N/A
   Text: Maps and Locations Jobs Directory Contact ASU My A
 
-Element 4563:
+Element 4576:
   Tag: div
   ID: wrapper-footer-innovation
   Class: wrapper
   Text: Maps and Locations Jobs Directory Contact ASU My A
 
-Element 4564:
+Element 4577:
   Tag: div
   ID: footer-innovation
   Class: container
   Text: Maps and Locations Jobs Directory Contact ASU My A
 
-Element 4565:
-  Tag: div
-  ID: N/A
-  Class: row
-  Text: Maps and Locations Jobs Directory Contact ASU My A
-
-Element 4566:
-  Tag: div
-  ID: N/A
-  Class: col
-  Text: Maps and Locations Jobs Directory Contact ASU My A
-
-Element 4567:
-  Tag: div
-  ID: N/A
-  Class: d-flex footer-innovation-links
-  Text: Maps and Locations Jobs Directory Contact ASU My A
-
-Element 4568:
-  Tag: nav
-  ID: N/A
-  Class: nav
-  Text: Maps and Locations Jobs Directory Contact ASU My A
-
-Element 4569:
-  Tag: a
-  ID: N/A
-  Class: nav-link
-  Text: Maps and Locations
-
-Element 4570:
-  Tag: a
-  ID: N/A
-  Class: nav-link
-  Text: Jobs
-
-Element 4571:
-  Tag: a
-  ID: N/A
-  Class: nav-link
-  Text: Directory
-
-Element 4572:
-  Tag: a
-  ID: N/A
-  Class: nav-link
-  Text: Contact ASU
-
-Element 4573:
-  Tag: a
-  ID: N/A
-  Class: nav-link
-  Text: My ASU
-
-Element 4574:
-  Tag: a
-  ID: N/A
-  Class: img-link
-  Text: 
-
-Element 4575:
-  Tag: img
-  ID: N/A
-  Class: N/A
-  Text: 
-
-Element 4576:
-  Tag: div
-  ID: wrapper-footer-colophon
-  Class: wrapper
-  Text: Copyright and Trademark Accessibility Privacy Term
-
-Element 4577:
-  Tag: div
-  ID: footer-colophon
-  Class: container
-  Text: Copyright and Trademark Accessibility Privacy Term
-
 Element 4578:
   Tag: div
   ID: N/A
   Class: row
-  Text: Copyright and Trademark Accessibility Privacy Term
+  Text: Maps and Locations Jobs Directory Contact ASU My A
 
 Element 4579:
   Tag: div
   ID: N/A
   Class: col
-  Text: Copyright and Trademark Accessibility Privacy Term
+  Text: Maps and Locations Jobs Directory Contact ASU My A
 
 Element 4580:
-  Tag: nav
+  Tag: div
   ID: N/A
-  Class: nav colophon
-  Text: Copyright and Trademark Accessibility Privacy Term
+  Class: d-flex footer-innovation-links
+  Text: Maps and Locations Jobs Directory Contact ASU My A
 
 Element 4581:
-  Tag: a
+  Tag: nav
   ID: N/A
-  Class: nav-link
-  Text: Copyright and Trademark
+  Class: nav
+  Text: Maps and Locations Jobs Directory Contact ASU My A
 
 Element 4582:
   Tag: a
   ID: N/A
   Class: nav-link
-  Text: Accessibility
+  Text: Maps and Locations
 
 Element 4583:
   Tag: a
   ID: N/A
   Class: nav-link
-  Text: Privacy
+  Text: Jobs
 
 Element 4584:
   Tag: a
   ID: N/A
   Class: nav-link
-  Text: Terms of Use
+  Text: Directory
 
 Element 4585:
   Tag: a
   ID: N/A
   Class: nav-link
-  Text: Emergency
+  Text: Contact ASU
 
 Element 4586:
-  Tag: span
+  Tag: a
   ID: N/A
-  Class: spinner-span
-  Text: 
+  Class: nav-link
+  Text: My ASU
 
 Element 4587:
-  Tag: div
+  Tag: a
   ID: N/A
-  Class: N/A
+  Class: img-link
   Text: 
 
 Element 4588:
-  Tag: script
+  Tag: img
   ID: N/A
   Class: N/A
   Text: 
 
 Element 4589:
+  Tag: div
+  ID: wrapper-footer-colophon
+  Class: wrapper
+  Text: Copyright and Trademark Accessibility Privacy Term
+
+Element 4590:
+  Tag: div
+  ID: footer-colophon
+  Class: container
+  Text: Copyright and Trademark Accessibility Privacy Term
+
+Element 4591:
+  Tag: div
+  ID: N/A
+  Class: row
+  Text: Copyright and Trademark Accessibility Privacy Term
+
+Element 4592:
+  Tag: div
+  ID: N/A
+  Class: col
+  Text: Copyright and Trademark Accessibility Privacy Term
+
+Element 4593:
+  Tag: nav
+  ID: N/A
+  Class: nav colophon
+  Text: Copyright and Trademark Accessibility Privacy Term
+
+Element 4594:
+  Tag: a
+  ID: N/A
+  Class: nav-link
+  Text: Copyright and Trademark
+
+Element 4595:
+  Tag: a
+  ID: N/A
+  Class: nav-link
+  Text: Accessibility
+
+Element 4596:
+  Tag: a
+  ID: N/A
+  Class: nav-link
+  Text: Privacy
+
+Element 4597:
+  Tag: a
+  ID: N/A
+  Class: nav-link
+  Text: Terms of Use
+
+Element 4598:
+  Tag: a
+  ID: N/A
+  Class: nav-link
+  Text: Emergency
+
+Element 4599:
+  Tag: span
+  ID: N/A
+  Class: spinner-span
+  Text: 
+
+Element 4600:
+  Tag: div
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 4601:
+  Tag: script
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 4602:
   Tag: script
   ID: N/A
   Class: N/A

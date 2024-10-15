@@ -1,0 +1,694 @@
+Total elements found: 116
+
+Element 1:
+  Tag: html
+  ID: N/A
+  Class: N/A
+  Text: Class Search Class Search Term Previous Terms Subj
+
+Element 2:
+  Tag: head
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 3:
+  Tag: meta
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 4:
+  Tag: style
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 5:
+  Tag: style
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 6:
+  Tag: link
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 7:
+  Tag: link
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 8:
+  Tag: script
+  ID: www-widgetapi-script
+  Class: N/A
+  Text: 
+
+Element 9:
+  Tag: script
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 10:
+  Tag: script
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 11:
+  Tag: script
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 12:
+  Tag: script
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 13:
+  Tag: script
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 14:
+  Tag: style
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 15:
+  Tag: meta
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 16:
+  Tag: meta
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 17:
+  Tag: link
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 18:
+  Tag: title
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 19:
+  Tag: script
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 20:
+  Tag: link
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 21:
+  Tag: style
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 22:
+  Tag: style
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 23:
+  Tag: body
+  ID: N/A
+  Class: N/A
+  Text: Class Search Class Search Term Previous Terms Subj
+
+Element 24:
+  Tag: div
+  ID: cookieConsentContainer
+  Class: N/A
+  Text: 
+
+Element 25:
+  Tag: noscript
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 26:
+  Tag: div
+  ID: root
+  Class: N/A
+  Text: Class Search Class Search Term Previous Terms Subj
+
+Element 27:
+  Tag: div
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 28:
+  Tag: div
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 29:
+  Tag: noscript
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 30:
+  Tag: div
+  ID: react-google-tag-manager-gtm
+  Class: N/A
+  Text: 
+
+Element 31:
+  Tag: script
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 32:
+  Tag: div
+  ID: N/A
+  Class: p-0 container-fluid
+  Text: Class Search Class Search Term Previous Terms Subj
+
+Element 33:
+  Tag: header
+  ID: asuHeader
+  Class: sc-kpDqfm IGZXJ
+  Text: Class Search
+
+Element 34:
+  Tag: div
+  ID: N/A
+  Class: sc-fqkvVR bBMtCs
+  Text: Class Search
+
+Element 35:
+  Tag: div
+  ID: N/A
+  Class: container-xl
+  Text: Class Search
+
+Element 36:
+  Tag: div
+  ID: N/A
+  Class: header-main
+  Text: Class Search
+
+Element 37:
+  Tag: div
+  ID: N/A
+  Class: navbar navbar-expand-xl 
+  Text: Class Search
+
+Element 38:
+  Tag: a
+  ID: N/A
+  Class: sc-dcJsrY hlClb navbar-brand
+  Text: 
+
+Element 39:
+  Tag: img
+  ID: N/A
+  Class: vert
+  Text: 
+
+Element 40:
+  Tag: img
+  ID: N/A
+  Class: horiz
+  Text: 
+
+Element 41:
+  Tag: button
+  ID: N/A
+  Class: navbar-toggler collapsed
+  Text: 
+
+Element 42:
+  Tag: svg
+  ID: N/A
+  Class: svg-inline--fa fa-bars 
+  Text: 
+
+Element 43:
+  Tag: path
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 44:
+  Tag: div
+  ID: N/A
+  Class: expand-title
+  Text: Class Search
+
+Element 45:
+  Tag: div
+  ID: N/A
+  Class: sc-dhKdcB iCasRL title
+  Text: Class Search
+
+Element 46:
+  Tag: a
+  ID: N/A
+  Class: title-subunit-name 
+  Text: Class Search
+
+Element 47:
+  Tag: section
+  ID: main
+  Class: mb-0 pt-5 pb-5
+  Text: Class Search Archives Return to current class sear
+
+Element 48:
+  Tag: div
+  ID: N/A
+  Class: container
+  Text: Class Search Archives Return to current class sear
+
+Element 49:
+  Tag: div
+  ID: N/A
+  Class: row
+  Text: Class Search Archives Return to current class sear
+
+Element 50:
+  Tag: div
+  ID: N/A
+  Class: p-0 col-auto
+  Text: Class Search Archives Return to current class sear
+
+Element 51:
+  Tag: h1
+  ID: N/A
+  Class:  mt-0
+  Text: Class Search Archives
+
+Element 52:
+  Tag: span
+  ID: N/A
+  Class: highlight-white
+  Text: Class Search Archives
+
+Element 53:
+  Tag: div
+  ID: N/A
+  Class: mt-md-1 mt-lg-4 align-items-center white-box p-3 row
+  Text: Term Spring 2023 Fall 2022 Summer 2022 Spring 2022
+
+Element 54:
+  Tag: div
+  ID: N/A
+  Class: p-0 pt-lg-0 pt-2 col-lg-2
+  Text: Term Spring 2023 Fall 2022 Summer 2022 Spring 2022
+
+Element 55:
+  Tag: div
+  ID: N/A
+  Class:  mb-0
+  Text: Term Spring 2023 Fall 2022 Summer 2022 Spring 2022
+
+Element 56:
+  Tag: label
+  ID: N/A
+  Class: form-label
+  Text: Term
+
+Element 57:
+  Tag: select
+  ID: term
+  Class: asu form-control form-select form-control
+  Text: Spring 2023 Fall 2022 Summer 2022 Spring 2022 Fall
+
+Element 58: Stale element, skipping
+
+Element 59:
+  Tag: div
+  ID: N/A
+  Class: p-0 pe-1 pe-lg-0 pt-lg-0 pt-2 col-lg-1 col-6
+  Text: Subject
+
+Element 60:
+  Tag: div
+  ID: N/A
+  Class:  mb-0
+  Text: Subject
+
+Element 61:
+  Tag: label
+  ID: N/A
+  Class: form-label
+  Text: Subject
+
+Element 62:
+  Tag: div
+  ID: N/A
+  Class: react-autosuggest__container
+  Text: 
+
+Element 63:
+  Tag: input
+  ID: N/A
+  Class: form-control asu upper
+  Text: 
+
+Element 64:
+  Tag: div
+  ID: react-autowhatever-1
+  Class: react-autosuggest__suggestions-container
+  Text: 
+
+Element 65:
+  Tag: div
+  ID: N/A
+  Class: p-0 pt-lg-0 pt-2 col-lg-1 col-6
+  Text: Number
+
+Element 66:
+  Tag: div
+  ID: N/A
+  Class:  mb-0
+  Text: Number
+
+Element 67:
+  Tag: label
+  ID: N/A
+  Class: form-label
+  Text: Number
+
+Element 68:
+  Tag: input
+  ID: catalogNbr
+  Class: asu form-control
+  Text: 
+
+Element 69:
+  Tag: div
+  ID: N/A
+  Class: p-0 pt-lg-0 pt-2  col-lg-3
+  Text: Keyword search
+
+Element 70:
+  Tag: div
+  ID: N/A
+  Class:  mb-0
+  Text: Keyword search
+
+Element 71:
+  Tag: label
+  ID: keyword-label
+  Class: form-label
+  Text: Keyword search
+
+Element 72:
+  Tag: input
+  ID: keyword
+  Class: asu form-control form-control
+  Text: 
+
+Element 73:
+  Tag: div
+  ID: N/A
+  Class: p-0   mt-3  col
+  Text: Search Classes
+
+Element 74:
+  Tag: button
+  ID: search-button
+  Class: btn btn-gold ms-lg-2
+  Text: Search Classes
+
+Element 75:
+  Tag: svg
+  ID: N/A
+  Class: svg-inline--fa fa-magnifying-glass me-2
+  Text: 
+
+Element 76:
+  Tag: path
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 77:
+  Tag: div
+  ID: N/A
+  Class: pt-3 ps-md-2 ps-0 col
+  Text: Advanced Search
+
+Element 78:
+  Tag: a
+  ID: N/A
+  Class: N/A
+  Text: Advanced Search
+
+Element 79:
+  Tag: span
+  ID: N/A
+  Class: text-nowrap
+  Text: Advanced Search
+
+Element 80:
+  Tag: div
+  ID: N/A
+  Class: sc-aXZVg dbyaOW app-footer
+  Text: ASU Class Search and Course Catalog Search Send Fe
+
+Element 81:
+  Tag: div
+  ID: feedback-section
+  Class: N/A
+  Text: ASU Class Search and Course Catalog Search Send Fe
+
+Element 82:
+  Tag: div
+  ID: N/A
+  Class: container
+  Text: ASU Class Search and Course Catalog Search Send Fe
+
+Element 83:
+  Tag: div
+  ID: N/A
+  Class: row pt-5
+  Text: ASU Class Search and Course Catalog Search Send Fe
+
+Element 84:
+  Tag: div
+  ID: N/A
+  Class: col-sm-2
+  Text: ASU Class Search and Course Catalog Search Send Fe
+
+Element 85:
+  Tag: p
+  ID: N/A
+  Class: N/A
+  Text: ASU Class Search and Course Catalog Search
+
+Element 86:
+  Tag: a
+  ID: N/A
+  Class: btn btn-md btn-maroon
+  Text: Send Feedback
+
+Element 87:
+  Tag: footer
+  ID: N/A
+  Class: N/A
+  Text: Maps and Locations Jobs Directory Contact ASU My A
+
+Element 88:
+  Tag: div
+  ID: wrapper-footer-innovation
+  Class: wrapper
+  Text: Maps and Locations Jobs Directory Contact ASU My A
+
+Element 89:
+  Tag: div
+  ID: footer-innovation
+  Class: container
+  Text: Maps and Locations Jobs Directory Contact ASU My A
+
+Element 90:
+  Tag: div
+  ID: N/A
+  Class: row
+  Text: Maps and Locations Jobs Directory Contact ASU My A
+
+Element 91:
+  Tag: div
+  ID: N/A
+  Class: col
+  Text: Maps and Locations Jobs Directory Contact ASU My A
+
+Element 92:
+  Tag: div
+  ID: N/A
+  Class: d-flex footer-innovation-links
+  Text: Maps and Locations Jobs Directory Contact ASU My A
+
+Element 93:
+  Tag: nav
+  ID: N/A
+  Class: nav
+  Text: Maps and Locations Jobs Directory Contact ASU My A
+
+Element 94:
+  Tag: a
+  ID: N/A
+  Class: nav-link
+  Text: Maps and Locations
+
+Element 95:
+  Tag: a
+  ID: N/A
+  Class: nav-link
+  Text: Jobs
+
+Element 96:
+  Tag: a
+  ID: N/A
+  Class: nav-link
+  Text: Directory
+
+Element 97:
+  Tag: a
+  ID: N/A
+  Class: nav-link
+  Text: Contact ASU
+
+Element 98:
+  Tag: a
+  ID: N/A
+  Class: nav-link
+  Text: My ASU
+
+Element 99:
+  Tag: a
+  ID: N/A
+  Class: img-link
+  Text: 
+
+Element 100:
+  Tag: img
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 101:
+  Tag: div
+  ID: wrapper-footer-colophon
+  Class: wrapper
+  Text: Copyright and Trademark Accessibility Privacy Term
+
+Element 102:
+  Tag: div
+  ID: footer-colophon
+  Class: container
+  Text: Copyright and Trademark Accessibility Privacy Term
+
+Element 103:
+  Tag: div
+  ID: N/A
+  Class: row
+  Text: Copyright and Trademark Accessibility Privacy Term
+
+Element 104:
+  Tag: div
+  ID: N/A
+  Class: col
+  Text: Copyright and Trademark Accessibility Privacy Term
+
+Element 105:
+  Tag: nav
+  ID: N/A
+  Class: nav colophon
+  Text: Copyright and Trademark Accessibility Privacy Term
+
+Element 106:
+  Tag: a
+  ID: N/A
+  Class: nav-link
+  Text: Copyright and Trademark
+
+Element 107:
+  Tag: a
+  ID: N/A
+  Class: nav-link
+  Text: Accessibility
+
+Element 108:
+  Tag: a
+  ID: N/A
+  Class: nav-link
+  Text: Privacy
+
+Element 109:
+  Tag: a
+  ID: N/A
+  Class: nav-link
+  Text: Terms of Use
+
+Element 110:
+  Tag: a
+  ID: N/A
+  Class: nav-link
+  Text: Emergency
+
+Element 111:
+  Tag: span
+  ID: N/A
+  Class: spinner-span
+  Text: Loading ...
+
+Element 112:
+  Tag: div
+  ID: N/A
+  Class: N/A
+  Text: Loading ...
+
+Element 113:
+  Tag: div
+  ID: N/A
+  Class: spinner-button mt-5 spinner-button-styles
+  Text: Loading ...
+
+Element 114:
+  Tag: span
+  ID: N/A
+  Class: me-2 spinner-grow spinner-grow-sm
+  Text: 
+
+Element 115:
+  Tag: script
+  ID: N/A
+  Class: N/A
+  Text: 
+
+Element 116:
+  Tag: script
+  ID: N/A
+  Class: N/A
+  Text: 
+
