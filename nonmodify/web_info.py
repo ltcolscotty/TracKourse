@@ -165,47 +165,63 @@ def next_page(driver, timeout=10):
         return False
 
 
-def all_elements(driver, timeout=10, file_name="webpage_elements.txt"):
+def wait_for_page_load(driver, timeout=10):
     try:
+        # Wait for the class results container to be present
         WebDriverWait(driver, timeout).until(
             EC.presence_of_element_located((By.ID, "class-results"))
         )
 
-        """WebDriverWait(driver, timeout).until(
-            EC.presence_of_element_located((By.XPATH, "//*[contains(text(), 'Next')]"))
+        # Wait for at least one class result to be visible
+        WebDriverWait(driver, timeout).until(
+            EC.visibility_of_element_located((By.CLASS_NAME, "class-accordion"))
+        )
+
+        """# Wait for the loading spinner to disappear
+        WebDriverWait(driver, timeout).until_not(
+            EC.presence_of_element_located((By.CLASS_NAME, "spinner-span"))
         )"""
 
-        # Find all elements on the page
-        all_elements = driver.find_elements(By.XPATH, "//*")
-
-        with open(file_name, "w", encoding="utf-8") as file:
-            file.write(f"Total elements found: {len(all_elements)}\n\n")
-
-            for index, element in enumerate(all_elements, start=1):
-                try:
-                    tag_name = element.tag_name
-                    element_id = element.get_attribute("id") or "N/A"
-                    element_class = element.get_attribute("class") or "N/A"
-                    element_text = element.text.replace("\n", " ")[
-                        :50
-                    ]  # Truncate long text
-
-                    file.write(f"Element {index}:\n")
-                    file.write(f"  Tag: {tag_name}\n")
-                    file.write(f"  ID: {element_id}\n")
-                    file.write(f"  Class: {element_class}\n")
-                    file.write(f"  Text: {element_text}\n")
-                    file.write("\n")
-                except StaleElementReferenceException:
-                    file.write(f"Element {index}: Stale element, skipping\n\n")
-                except Exception as e:
-                    file.write(f"Error processing element {index}: {str(e)}\n\n")
-
-        print(f"Results have been saved to {file_name}")
+        print("Page fully loaded!")
+        return True
 
     except TimeoutException:
-        print(
-            f"Timed out waiting for 'loading...' text to disappear after {timeout} seconds"
-        )
+        print(f"Page did not load completely within {timeout} seconds")
+        return False
+
+
+def all_elements(driver, timeout=10, file_name="webpage_elements.txt"):
+    try:
+        if wait_for_page_load(driver, 10):
+
+            # Find all elements on the page
+            all_elements = driver.find_elements(By.XPATH, "//*")
+
+            with open(file_name, "w", encoding="utf-8") as file:
+                file.write(f"Total elements found: {len(all_elements)}\n\n")
+
+                for index, element in enumerate(all_elements, start=1):
+                    try:
+                        tag_name = element.tag_name
+                        element_id = element.get_attribute("id") or "N/A"
+                        element_class = element.get_attribute("class") or "N/A"
+                        element_text = element.text.replace("\n", " ")[
+                            :50
+                        ]  # Truncate long text
+
+                        file.write(f"Element {index}:\n")
+                        file.write(f"  Tag: {tag_name}\n")
+                        file.write(f"  ID: {element_id}\n")
+                        file.write(f"  Class: {element_class}\n")
+                        file.write(f"  Text: {element_text}\n")
+                        file.write("\n")
+                    except StaleElementReferenceException:
+                        file.write(f"Element {index}: Stale element, skipping\n\n")
+                    except Exception as e:
+                        file.write(f"Error processing element {index}: {str(e)}\n\n")
+
+            print(f"Results have been saved to {file_name}")
+        else:
+            print("Page did not load properly")
     except Exception as e:
         print(f"An error occurred: {str(e)}")
