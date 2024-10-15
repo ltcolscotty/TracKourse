@@ -192,7 +192,7 @@ def wait_for_page_load(driver, timeout=10):
 
 def all_elements(driver, timeout=10, file_name="webpage_elements.txt"):
     try:
-        if wait_for_page_load(driver, 10):
+        if wait_for_page_load(driver, timeout):
 
             # Find all elements on the page
             all_elements = driver.find_elements(By.XPATH, "//*")
