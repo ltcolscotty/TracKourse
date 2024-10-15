@@ -9,7 +9,7 @@ Running this should:
 - View the professor, if the professor and class code match, an email will be sent to the target email
 
 ## Setup
-
+[ENV is not used currently]
 ``.env`` format
 ```python
 LOGIN_USERNAME=''

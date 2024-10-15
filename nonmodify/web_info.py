@@ -1,5 +1,4 @@
 import re
-import time
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -166,6 +165,7 @@ def next_page(driver, timeout=10):
 
 
 def wait_for_page_load(driver, timeout=10):
+    """Waits for page to load; use in if statement implementation"""
     try:
         # Wait for the class results container to be present
         WebDriverWait(driver, timeout).until(
@@ -177,11 +177,6 @@ def wait_for_page_load(driver, timeout=10):
             EC.visibility_of_element_located((By.CLASS_NAME, "class-accordion"))
         )
 
-        """# Wait for the loading spinner to disappear
-        WebDriverWait(driver, timeout).until_not(
-            EC.presence_of_element_located((By.CLASS_NAME, "spinner-span"))
-        )"""
-
         print("Page fully loaded!")
         return True
 
@@ -191,6 +186,7 @@ def wait_for_page_load(driver, timeout=10):
 
 
 def all_elements(driver, timeout=10, file_name="webpage_elements.txt"):
+    """scans all elements on the page and moves them to a file in format"""
     try:
         if wait_for_page_load(driver, timeout):
 
