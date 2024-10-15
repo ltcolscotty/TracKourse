@@ -19,7 +19,7 @@ class_list = [
         "MAT",
         "243",
         "C",
-        ["Ajitg Nair", "Haiyan Wang", "Hedvig Mohacsy"],
+        ["Ajith Nair", "Haiyan Wang", "Hedvig Mohacsy"],
         "Tempe",
         "9:00AM",
         "5:00PM",
