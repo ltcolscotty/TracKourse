@@ -7,6 +7,7 @@ from selenium.common.exceptions import (
     TimeoutException,
     NoSuchElementException,
     StaleElementReferenceException,
+    ElementClickInterceptedException,
 )
 
 
@@ -128,39 +129,31 @@ def agg_data(page_data):
 
 
 def next_page(driver, timeout=10):
-    """Iterate to next page if there is a next page"""
+    """Next Page toggler, this function seems to work better than the first"""
     try:
-        # Wait for the class results to be present
-        WebDriverWait(driver, timeout).until(
-            EC.presence_of_element_located((By.ID, "class-results"))
+        # Wait for the "Next" button to be present
+        next_button = WebDriverWait(driver, timeout).until(
+            EC.presence_of_element_located(
+                (By.XPATH, "//li[contains(@class, 'page-item')]/a[text()='Next']")
+            )
         )
 
-        # Look for the pagination element
-        pagination = driver.find_element(By.CLASS_NAME, "pagination")
+        # Scroll the button into view
+        driver.execute_script("arguments[0].scrollIntoView(true);", next_button)
 
-        # Find all list items in the pagination
-        pagination_items = pagination.find_elements(By.TAG_NAME, "li")
+        # Wait for a short time to allow any animations to complete
+        driver.implicitly_wait(2)
 
-        # Check if there's a "Next" button
-        next_button = None
-        for item in pagination_items:
-            if "next" in item.get_attribute("class"):
-                next_button = item.find_element(By.TAG_NAME, "a")
-                break
-
-        if next_button and "disabled" not in next_button.get_attribute("class"):
-            next_button.click()
-            print("Clicked to the next page")
-            return True
-        else:
-            print("Next page button not found or disabled. This may be the last page.")
-            return False
-
-    except TimeoutException:
-        print("Class results not found within the timeout period.")
-        return False
-    except NoSuchElementException:
-        print("Pagination element not found.")
+        # Click the "Next" button
+        next_button.click()
+        print("Clicked 'Next' button successfully")
+        return True
+    except ElementClickInterceptedException:
+        print("Click was intercepted. Attempting to click with JavaScript.")
+        driver.execute_script("arguments[0].click();", next_button)
+        return True
+    except Exception as e:
+        print(f"Failed to find or click 'Next' button: {str(e)}")
         return False
 
 
