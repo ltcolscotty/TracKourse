@@ -30,27 +30,7 @@ with webdriver.Chrome(service=Service(chromedriver_path)) as driver:
     driver.implicitly_wait(10)
 
     try:
-        # Wait for and interact with the catalog number input
-        input_number_element = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.ID, "catalogNbr"))
-        )
-        input_number_element.clear()
-        input_number_element.send_keys("102")
-
-        # Wait for and interact with the subject input
-        input_class_element = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable(
-                (By.CSS_SELECTOR, "input[name='subject'][placeholder='Subject']")
-            )
-        )
-        input_class_element.clear()
-        input_class_element.send_keys("ENG")
-
-        # Wait for the search button to be clickable
-        search_button_element = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.ID, "search-button"))
-        )
-        search_button_element.click()
+        wi.access_class(driver, "ENG", "102")
 
         time.sleep(10)
         if wi.wait_for_page_load(driver):

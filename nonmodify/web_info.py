@@ -1,4 +1,5 @@
 import re
+import time
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -10,9 +11,31 @@ from selenium.common.exceptions import (
 )
 
 
-def access_page(driver):
+def access_class(driver, subject, number):
     """clear search bars and search the class input"""
-    pass
+    input_number_element = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "catalogNbr"))
+        )
+    input_number_element.clear()
+    input_number_element.send_keys("102")
+
+    # Wait for and interact with the subject input
+    input_class_element = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable(
+            (By.CSS_SELECTOR, "input[name='subject'][placeholder='Subject']")
+        )
+    )
+    input_class_element.clear()
+    input_class_element.send_keys("ENG")
+
+    # Add a short wait
+    time.sleep(1)
+
+    # Wait for the search button to be clickable
+    search_button_element = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.ID, "search-button"))
+    )
+    search_button_element.click()
 
 
 def scan_boxes(driver):
