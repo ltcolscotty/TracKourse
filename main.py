@@ -1,3 +1,12 @@
+"""
+Process:
+- Initiate first search
+Loop:
+- Use scan and aggregate to find information
+- Send Email if any Positives are found
+- Clear results, next search starts
+"""
+
 import os
 import time
 
