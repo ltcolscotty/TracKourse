@@ -20,8 +20,8 @@ def access_class(driver, subject, number):
     """
     try:
         input_number_element = WebDriverWait(driver, 10).until(
-                EC.element_to_be_clickable((By.ID, "catalogNbr"))
-            )
+            EC.element_to_be_clickable((By.ID, "catalogNbr"))
+        )
         input_number_element.clear()
         input_number_element.send_keys("102")
 
@@ -47,7 +47,12 @@ def access_class(driver, subject, number):
 
 
 def scan_boxes(driver):
-    """Look through the page and scan through divs"""
+    """Look through the page and scan through divs
+    Args:
+        driver: Selenium Webdriver
+    Returns:
+        str: formatted output text for aggregation function for one class
+    """
     try:
         # Wait for the class results to be present
         WebDriverWait(driver, 10).until(
@@ -92,7 +97,12 @@ def scan_boxes(driver):
 
 
 def agg_data(page_data):
-    """Process box input into an analyzable dataform"""
+    """Process box input into an analyzable dataform
+    Args:
+        page_data: str - taken from scan_boxes()
+    Returns:
+        list({str, str}...): - list of class information dictonaries to parse through
+    """
     classes = []
     current_class = {}
     lines = page_data.strip().split("\n")
@@ -159,7 +169,13 @@ def agg_data(page_data):
 
 
 def next_page(driver, timeout=10):
-    """Next Page toggler, this function seems to work better than the first"""
+    """Next Page toggler, this function seems to work better than the first
+    Args:
+        driver: Selenium Driver
+        timeout: int - timeout in seconds. Default is 10
+    Returns:
+        bool: status if next page was successfully toggled
+    """
     try:
         # Wait for the "Next" button to be present
         next_button = WebDriverWait(driver, timeout).until(
@@ -188,7 +204,13 @@ def next_page(driver, timeout=10):
 
 
 def wait_for_page_load(driver, timeout=10):
-    """Waits for page to load; use in if statement implementation"""
+    """Waits for page to load; use in if statement implementation
+    Args:
+        driver: Selenium Driver
+        timeout: int: time before timeout in seconds.  Default is 10
+    Returns:
+        bool: Status of page load
+    """
     try:
         # Wait for the class results container to be present
         WebDriverWait(driver, timeout).until(
@@ -209,7 +231,12 @@ def wait_for_page_load(driver, timeout=10):
 
 
 def all_elements(driver, timeout=10, file_name="webpage_elements.txt"):
-    """scans all elements on the page and moves them to a file in format"""
+    """scans all elements on the page and moves them to a file in format
+    Args:
+        driver: Selenium Driver
+        timeout: int - timeout in seconds. Default is 10
+        file_name: str - name of file to save to. Default is webpage_elements.txt
+    """
     try:
         if wait_for_page_load(driver, timeout):
 
