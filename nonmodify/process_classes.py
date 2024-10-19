@@ -1,7 +1,8 @@
 import re
+from class_info import class_info as ci
 
 
-def parse_info(agg_data):
+def filter_info(agg_data, workingClass: ci):
     """Processes dictionary data"""
     for class_data in agg_data:
         pass
