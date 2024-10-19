@@ -25,21 +25,24 @@ chromedriver_path = get_chromedriver_path(driver_path)
 
 with webdriver.Chrome(service=Service(chromedriver_path)) as driver:
     driver.get("https://catalog.apps.asu.edu/catalog/classes")
+    driver.maximize_window()
     driver.implicitly_wait(10)
 
     try:
         wi.access_class(driver, "ENG", "102")
         string_result = wi.scan_boxes(driver)
-        aggregator.agg_data(string_result)
         time.sleep(10)
-        if wi.wait_for_page_load(driver):
+        """if wi.wait_for_page_load(driver):
             if wi.next_page(driver):
                 time.sleep(10)
                 print("Page Toggler Success (1)")
             else:
                 print("Page Toggler Fail (1)")
         else:
-            print("Some issue occured")
+            print("Some issue occured")"""
+
+        print(string_result)
+        # print(aggregator.agg_data(string_result))
 
     except TimeoutException:
         print("Timed out waiting for page elements to load (Outer)")
