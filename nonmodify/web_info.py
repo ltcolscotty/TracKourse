@@ -18,6 +18,9 @@ def access_class(driver, subject, number):
         number: str (123, 101, 534, etc.)
     """
     try:
+        # Add a short wait
+        time.sleep(1)
+
         input_number_element = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.ID, "catalogNbr"))
         )
