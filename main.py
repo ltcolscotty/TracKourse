@@ -41,7 +41,8 @@ with webdriver.Chrome(service=Service(chromedriver_path)) as driver:
         else:
             print("Some issue occured")"""
 
-        print(aggregator.agg_data(string_result))
+        # print(string_result)
+        print(aggregator.aggregate(string_result))
 
     except TimeoutException:
         print("Timed out waiting for page elements to load (Outer)")
