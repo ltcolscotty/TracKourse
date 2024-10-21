@@ -4,7 +4,12 @@ from nonmodify.class_info import class_info as ci
 
 
 def cluster_classes(input_text):
-    # Split the input into individual class entries
+    """Groups classes for later functions
+    Args:
+        input_text: str - Unformatted raw output from selenium collector
+    Returns:
+        str: returns in grouped format
+    """
     classes = re.split(r"\n\n+", input_text.strip())
 
     formatted_classes = []
@@ -29,6 +34,12 @@ def cluster_classes(input_text):
 
 
 def fix_hybrid_clusters(input_text):
+    """Fixes hybrid class formatting from selenium output (Targetting start and end times)
+    Args:
+        input_text: str - clustered classes
+    Returns:
+        str: fixes hybrid class formatting
+    """
     lines = input_text.split("\n")
     standardized_lines = []
 
@@ -53,6 +64,12 @@ def fix_hybrid_clusters(input_text):
 
 
 def standardize_course_info(input_text):
+    """Standardizes cluster info
+    Args:
+        input_text: str - clustered text
+    Returns:
+        str: fully standardized output in three lines
+    """
     clusters = input_text.strip().split("\n\n")
     standardized_clusters = []
 
@@ -113,11 +130,23 @@ def standardize_course_info(input_text):
 
 
 def differentiate_clusters(input_text):
+    """splits long string into clusters to be processed
+    Args:
+        input_text: str - standardized text
+    Returns:
+        list[str]: list of cluster data to be processed
+    """
     clusters = input_text.split("\n\n")
     return [cluster.strip() for cluster in clusters if cluster.strip()]
 
 
 def process_cluster(cluster):
+    """Processes one cluster of class data to dictionary format
+    Args:
+        cluster: str - one cluster of three lines
+    Returns:
+        dict: dictionary entry for one class' information    
+    """
     lines = cluster.strip().split("\n")
     if len(lines) < 2:
         return None
@@ -168,6 +197,12 @@ def process_cluster(cluster):
 
 
 def aggregate(input_text):
+    """Overarching data aggregation function
+    Args:
+        input_text: str - Selenium output
+    Returns:
+        list[dict]: list of class information to filter
+    """
     input_text = cluster_classes(input_text)
     input_text = fix_hybrid_clusters(input_text)
     input_text = standardize_course_info(input_text)
