@@ -21,6 +21,8 @@ class class_info:
         end: str = None,
         honors: bool = False,
         required: bool = True,
+        hybrid_allowed: bool = False,
+        iCourse_allowed: bool = False,
         id_list: list[str] = None,
     ):
         self.subj = subj.upper()
@@ -31,6 +33,8 @@ class class_info:
         self.honors = honors
         self.fullcode = self.subj + self.nbr
         self.required = required
+        self.hybrid = hybrid_allowed
+        self.iCourse = iCourse_allowed
 
         if id is not None:
             self.has_id = True
