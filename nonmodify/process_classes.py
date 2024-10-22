@@ -165,8 +165,8 @@ def process_cluster(cluster):
         return None  # Invalid cluster
 
     course_info = lines[0].split()
-    class_name = course_info[0]
-    class_id = course_info[1]
+    class_name = ' '.join(course_info[:2])
+    class_id = course_info[2]
 
     details = lines[1].split('|')
     professors = [prof.strip() for prof in details[0].strip().split(',')]
