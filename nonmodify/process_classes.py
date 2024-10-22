@@ -1,6 +1,8 @@
 import re
 from datetime import datetime
+
 from nonmodify.class_info import class_info as ci
+import nonmodify.logger_helper as lh
 
 
 def cluster_classes(input_text):
@@ -106,16 +108,18 @@ def standardize_course_info(input_text):
         # Standardize location
         if "iCourse" in " ".join(details):
             location = "iCourse"
+            time = "N/A - N/A"
+            days = "N/A"
         elif "ASU Online" in " ".join(details):
             location = "Online"
+            time = "N/A - N/A"
+            days = "N/A"
 
         # Ensure time format is consistent
         if time != "N/A - N/A":
             time_parts = time.split("-")
             if len(time_parts) == 2:
                 start, end = time_parts
-                if "PM" in end and "AM" not in start and ":" in start:
-                    start += " PM"
                 time = f"{start.strip()} - {end.strip()}"
 
         standardized_cluster = (
@@ -145,55 +149,48 @@ def process_cluster(cluster):
     Args:
         cluster: str - one cluster of three lines
     Returns:
-        dict: dictionary entry for one class' information    
+        dict: dictionary entry for one class' information in the format
+            ```
+            Class: str
+            Class ID: Int
+            Professors: list[str]
+            Days: str
+            Start time: str
+            End time: str
+            Location: str
+            Spots left: int```
     """
-    lines = cluster.strip().split("\n")
-    if len(lines) < 2:
-        return None
+    lines = cluster.strip().split('\n')
+    if len(lines) != 3:
+        return None  # Invalid cluster
 
-    header = lines[0].split()
-    class_info = {"ID": int(header[2])}
+    course_info = lines[0].split()
+    class_name = course_info[0]
+    class_id = course_info[1]
 
-    details = lines[1].split("|")
-    teachers = [t.strip() for t in details[0].split(",")]
-    class_info["Teachers"] = teachers
+    details = lines[1].split('|')
+    professors = [prof.strip() for prof in details[0].strip().split(',')]
+    days = details[1].strip()
+    times = details[2].strip().split('-')
+    start_time = times[0].strip() if len(times) > 1 else 'N/A'
+    end_time = times[1].strip() if len(times) > 1 else 'N/A'
+    location = details[3].strip() if len(details) > 3 else 'N/A'
 
-    if "iCourse" in details or "ASU Online" in details:
-        course_type = "iCourse" if "iCourse" in details else "ASU Online"
-        class_info["Days"] = course_type
-        class_info["Start time"] = course_type
-        class_info["End time"] = course_type
-        class_info["Location"] = course_type
-    elif "Internet - Hybrid" in details:
-        class_info["Days"] = "Not handled with current version"
-        time_parts = " ".join([part.strip() for part in details[1:-1] if part.strip()])
-        time_match = re.search(r"(\d+:\d+ [AP]M)\s*-\s*(\d+:\d+ [AP]M)", time_parts)
-        if time_match:
-            class_info["Start time"] = time_match.group(1)
-            class_info["End time"] = time_match.group(2)
-        else:
-            class_info["Start time"] = "Not available"
-            class_info["End time"] = "Not available"
-        class_info["Location"] = details[-2].split("-")[0].strip()
-    else:
-        class_info["Days"] = details[1].strip()
-        time_match = re.search(
-            r"(\d+:\d+ [AP]M)\s*-\s*(\d+:\d+ [AP]M)", details[2] + " " + details[3]
-        )
-        if time_match:
-            class_info["Start time"] = time_match.group(1)
-            class_info["End time"] = time_match.group(2)
-        else:
-            class_info["Start time"] = details[2].strip()
-            class_info["End time"] = details[3].strip()
-        class_info["Location"] = details[4].split("-")[0].strip()
-
-    enrollment = lines[-1].split()
+    enrollment = lines[2].strip().split('of')
     current = int(enrollment[0])
-    total = int(enrollment[2])
-    class_info["has_spots"] = current < total
+    capacity = int(enrollment[1])
+    spots_left = capacity - current
 
-    return class_info
+    return {
+        'Class': class_name,
+        'Class ID': class_id,
+        'Professors': professors,
+        'Days': days,
+        'Start time': start_time,
+        'End time': end_time,
+        'Location': location,
+        'Spots left': spots_left
+    }
 
 
 def aggregate(input_text):
@@ -208,10 +205,11 @@ def aggregate(input_text):
     input_text = standardize_course_info(input_text)
     clusters = differentiate_clusters(input_text)
     final_list = []
-    # for cluster in clusters:
+    for cluster in clusters:
+        final_list.append(process_cluster(cluster))
 
-    print(input_text)
-
+    lh.write_file("list_log.txt", str(final_list))
+    
     return final_list
 
 
