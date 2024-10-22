@@ -217,6 +217,21 @@ def aggregate(input_text):
 
 
 def filter_info(agg_data, workingClass: ci):
-    """Processes dictionary data"""
+    """Processes dictionary data
+    Args:
+        agg_data: Dict - processed data in dictionary format
+        workingClass: class_info.class_info - class of interest
+    Returns: 
+        list[int] - class codes that match and have spots
+    """
+    # unpack info for quick reference
+    class_code = workingClass.fullcode
+    location = workingClass.location
+    professors = workingClass.professor_list
+    hybrid_allowed = workingClass.hybrid
+    iCourse_allowed = workingClass.iCourse
+    start_prefer = workingClass.start
+    end_prefer = workingClass.end
+
     for class_data in agg_data:
         pass
