@@ -1,3 +1,5 @@
+"""Handles data processing and filtering"""
+
 import re
 from datetime import datetime
 

@@ -1,3 +1,5 @@
+"""Selenium installer functions"""
+
 import os
 import requests
 import zipfile
