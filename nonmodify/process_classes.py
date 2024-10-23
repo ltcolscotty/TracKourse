@@ -253,9 +253,11 @@ def filter_info(agg_data, workingClass: ci):
         ):
             pass
 
+
 def isAfter(input, target):
     """Determines if the input is after the target"""
     pass
+
 
 def isBefore(input, target):
     """Determines if the input is before the target"""
