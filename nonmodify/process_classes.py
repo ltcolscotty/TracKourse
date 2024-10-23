@@ -160,36 +160,36 @@ def process_cluster(cluster):
             Location: str
             Spots left: int```
     """
-    lines = cluster.strip().split('\n')
+    lines = cluster.strip().split("\n")
     if len(lines) != 3:
         return None  # Invalid cluster
 
     course_info = lines[0].split()
-    class_name = ' '.join(course_info[:2])
+    class_name = " ".join(course_info[:2])
     class_id = course_info[2]
 
-    details = lines[1].split('|')
-    professors = [prof.strip() for prof in details[0].strip().split(',')]
+    details = lines[1].split("|")
+    professors = [prof.strip() for prof in details[0].strip().split(",")]
     days = details[1].strip()
-    times = details[2].strip().split('-')
-    start_time = times[0].strip() if len(times) > 1 else 'N/A'
-    end_time = times[1].strip() if len(times) > 1 else 'N/A'
-    location = details[3].strip() if len(details) > 3 else 'N/A'
+    times = details[2].strip().split("-")
+    start_time = times[0].strip() if len(times) > 1 else "N/A"
+    end_time = times[1].strip() if len(times) > 1 else "N/A"
+    location = details[3].strip() if len(details) > 3 else "N/A"
 
-    enrollment = lines[2].strip().split('of')
+    enrollment = lines[2].strip().split("of")
     current = int(enrollment[0])
     capacity = int(enrollment[1])
     spots_left = capacity - current
 
     return {
-        'Class': class_name,
-        'Class ID': class_id,
-        'Professors': professors,
-        'Days': days,
-        'Start time': start_time,
-        'End time': end_time,
-        'Location': location,
-        'Spots left': spots_left
+        "Class": class_name,
+        "Class ID": class_id,
+        "Professors": professors,
+        "Days": days,
+        "Start time": start_time,
+        "End time": end_time,
+        "Location": location,
+        "Spots left": spots_left,
     }
 
 
@@ -209,7 +209,7 @@ def aggregate(input_text):
         final_list.append(process_cluster(cluster))
 
     lh.write_file("list_log.txt", str(final_list))
-    
+
     return final_list
 
 
@@ -221,7 +221,7 @@ def filter_info(agg_data, workingClass: ci):
     Args:
         agg_data: Dict - processed data in dictionary format
         workingClass: class_info.class_info - class of interest
-    Returns: 
+    Returns:
         list[int] - class codes that match and have spots
     """
     # unpack info for quick reference
@@ -233,5 +233,30 @@ def filter_info(agg_data, workingClass: ci):
     start_prefer = workingClass.start
     end_prefer = workingClass.end
 
+    returned_ids = []
     for class_data in agg_data:
-        pass
+        if (
+            # Verify class code
+            (class_data["Class"] == class_code)
+            # Check location
+            and (
+                (location in class_data["Location"])
+                or (hybrid_allowed and "Hybrid" in class_data["Location"])
+                or (iCourse_allowed and "iCourse" in class_data["Location"])
+            )
+            # Check professors
+            and (
+                (not professors)
+                or (prof in workingClass["Professors"] for prof in professors)
+            )
+            and ()
+        ):
+            pass
+
+def isAfter(input, target):
+    """Determines if the input is after the target"""
+    pass
+
+def isBefore(input, target):
+    """Determines if the input is before the target"""
+    pass
