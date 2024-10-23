@@ -254,11 +254,25 @@ def filter_info(agg_data, workingClass: ci):
             pass
 
 
-def isAfter(input, target):
-    """Determines if the input is after the target"""
-    pass
+def isAfter(input_time: str, target: datetime):
+    """Determines if the input is after the target (input is after target)
+    Args:
+        input_time: str - time to compare
+        target: datetime - time to compare to
+    Returns:
+        bool: whether input is after target
+    """
+    input_time = datetime.strptime(input_time, "%I:%M %p")
+    return input_time > target
 
 
-def isBefore(input, target):
-    """Determines if the input is before the target"""
-    pass
+def isBefore(input_time: str, target: datetime):
+    """Determines if the input is before the target (input is before target)
+    Args:
+        input_time: str - time to compare
+        target: datetime - time to compare to
+    Returns:
+        bool: Whether input is before target
+    """
+    input_time = datetime.strptime(input_time, "%I:%M %p")
+    return input_time < target
