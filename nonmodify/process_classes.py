@@ -249,9 +249,10 @@ def filter_info(agg_data, workingClass: ci):
                 (not professors)
                 or (prof in workingClass["Professors"] for prof in professors)
             )
-            and ()
+            and (isAfter(class_data["Start time"], start_prefer)
+                and isBefore(class_data["End time"], end_prefer))
         ):
-            pass
+            returned_ids.append({"ID": class_data["Class_ID"]})
 
 
 def isAfter(input_time: str, target: datetime):
