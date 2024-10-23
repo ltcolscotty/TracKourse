@@ -4,6 +4,6 @@ def write_file(filename, content):
         fileName: str - name of file to write to
         content: str - file content
     """
-    with open(filename, 'w') as file:
+    with open(filename, "w") as file:
         file.write(content)
     print(f"Content written to {filename}")
