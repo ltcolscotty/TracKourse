@@ -234,12 +234,15 @@ def filter_info(agg_data, workingClass: ci):
     iCourse_allowed = workingClass.iCourse
     start_prefer = workingClass.start
     end_prefer = workingClass.end
+    days = workingClass.days
 
     returned_ids = []
     for class_data in agg_data:
         if (
             # Verify class code
             (class_data["Class"] == class_code)
+            # Check for spots left
+            and (class_data["Spots left"] > 0)
             # Check location
             and (
                 (location in class_data["Location"])
@@ -251,12 +254,24 @@ def filter_info(agg_data, workingClass: ci):
                 (not professors)
                 or (prof in workingClass["Professors"] for prof in professors)
             )
+            # Check time
             and (
                 isAfter(class_data["Start time"], start_prefer)
                 and isBefore(class_data["End time"], end_prefer)
             )
+            # Check Days
+            and (
+                days.contains(class_data["Days"])
+            )
+
         ):
-            returned_ids.append({"ID": class_data["Class_ID"]})
+            returned_ids.append({
+                "ID": class_data["Class_ID"], 
+                "Professors": class_data["Professors"], 
+                "Start time": class_data["Start_time"],
+                "End time": class_data["End_time"],
+                "Days": class_data["Days"]
+                })
 
 
 def isAfter(input_time: str, target: datetime):

@@ -24,6 +24,7 @@ class class_info:
         hybrid_allowed: bool = False,
         iCourse_allowed: bool = False,
         id_list: list[str] = None,
+        days: list[str] = ["M W F", "T Th", "M W", "M", "T", "W", "Th", "F"]
     ):
         self.subj = subj.upper()
         self.nbr = nbr
@@ -35,6 +36,7 @@ class class_info:
         self.required = required
         self.hybrid = hybrid_allowed
         self.iCourse = iCourse_allowed
+        self.days = days
 
         if id is not None:
             self.has_id = True
