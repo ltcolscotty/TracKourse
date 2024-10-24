@@ -8,13 +8,8 @@ Running this should:
 - Search the class portal for open spots
 - View the professor, if the professor and class code match, an email will be sent to the target email
 
+## ToDo:
+- Restructure to use playwright instead of selenium for increased speeds
+
 ## Setup
-[ENV is not used currently]
-``.env`` format
-```python
-LOGIN_USERNAME=''
-LOGIN_PASSWORD=''
-EMAIL_USER=''
-EMAIL_PASSWORD=''
-TARGET_EMAIL=''
-```
+---

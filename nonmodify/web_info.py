@@ -11,6 +11,8 @@ from selenium.common.exceptions import (
     ElementClickInterceptedException,
 )
 
+from nonmodify.class_info import class_info as ci
+
 
 def access_class(driver, subject, number):
     """clear search bars and search the class input
@@ -203,3 +205,7 @@ def all_elements(driver, timeout=10, file_name="webpage_elements.txt"):
             print("Page did not load properly")
     except Exception as e:
         print(f"An error occurred: {str(e)}")
+
+
+def scan_class(class_name: ci, driver):
+    access_class(driver, class_name.subj, class_name.nbr)
