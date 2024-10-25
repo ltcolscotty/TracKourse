@@ -2,7 +2,19 @@
 searches to reduce instances of wrong results showing up"""
 
 
-def access_class_page(subject, catalog_number, campus, session, term):
+# Location should be something like TEMPE, ICOURSE, or something like that
+def get_search_url(subject, catalog_number, campus, session, term):
+    """Gets filtered URL based on inputs
+    Args:
+        subject: str - Subject (eg. [MAT] xxx)
+        catalog_number: str - catalog number (eg. xxx [101])
+        campus: str - all caps campus location (eg. ICOURSE, TEMPE)
+        session: str - A, B, or C
+        term: str - 2251, broken down into (2xxx - default, x25x - year (eg 2025 -> x25x), xxx1 (Semester))
+
+    Returns:
+        str: URL to access
+    """
     base_url = "https://catalog.apps.asu.edu/catalog/classes/classlist"
     # Construct the URL with the given parameters
     url = (
@@ -10,10 +22,3 @@ def access_class_page(subject, catalog_number, campus, session, term):
         f"&honors=F&promod=F&searchType=open&session={session}&subject={subject}&term={term}"
     )
     return url
-
-
-# Example usage
-# Location should be something like TEMPE, ICOURSE, or something like that
-print(access_class_page("MAT", "267", "TEMPE", "C", 2251))
-print(access_class_page("ENG", "102", "TEMPE", "C", 2251))
-print(access_class_page("MAT", "266", "ICOURSE", "C", 2251))
