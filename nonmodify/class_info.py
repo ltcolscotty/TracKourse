@@ -14,9 +14,9 @@ class class_info:
         self,
         subj: str,
         nbr: str,
-        session: str,
-        professor_list: list[str],
-        location: str = "Tempe",
+        session: str = "C",
+        professor_list: list[str] = [],
+        location: str = "TEMPE",
         start: str = None,
         end: str = None,
         honors: bool = False,
@@ -30,7 +30,7 @@ class class_info:
         self.nbr = nbr
         self.session = session.upper()
         self.professor_list = professor_list
-        self.location = location
+        self.location = location.upper()
         self.honors = honors
         self.fullcode = self.subj + self.nbr
         self.required = required
