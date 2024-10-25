@@ -1,17 +1,19 @@
 from playwright.sync_api import sync_playwright
 
-from nonmodify.class_info import class_info as ci
 import nonmodify.web_info_v2 as wi2
 import const_config as cc
 
 url_list = []
-# Example access_class_page("MAT", "267", "TEMPE", "C", 2251)
+
+# puts url variables in scope for efficiency
 for specification in cc.class_list:
     url_list.append(
         wi2.get_search_url(
             specification.subj,
             specification.nbr,
             specification.location.upper(),
+            specification.session,
+            cc.url_year
         )
     )
 
@@ -22,6 +24,7 @@ with sync_playwright() as p:
     page = browser.new_page()
 
     # Navigate to the constructed URL
+
     page.goto(url)
 
     # Perform any additional actions if needed
