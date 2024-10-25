@@ -14,4 +14,6 @@ def access_class_page(subject, catalog_number, campus, session, term):
 
 # Example usage
 # Location should be something like TEMPE, ICOURSE, or something like that
-print(access_class_page("MAT", "102", "TEMPE", "C", 2251))
+print(access_class_page("MAT", "267", "TEMPE", "C", 2251))
+print(access_class_page("ENG", "102", "TEMPE", "C", 2251))
+print(access_class_page("MAT", "266", "ICOURSE", "C", 2251))

@@ -5,6 +5,8 @@ FORMAT:
 class_info(subj, nbr, session, professor_list, location, start, end, honors)
 """
 
+url_year = 2251
+
 class_list = [
     class_info(
         "MAT",
