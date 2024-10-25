@@ -20,12 +20,13 @@ for specification in cc.class_list:
 
 with sync_playwright() as p:
     # Launch the browser
-    browser = p.chromium.launch()
+    browser = p.chromium.launch(headless=False, channel="chrome")
     page = browser.new_page()
 
     # Navigate to the constructed URL
-
-    page.goto(url)
+    for url in url_list:
+        page.goto(url)
+        # do the scraping stuff
 
     # Perform any additional actions if needed
     # For example: page.screenshot(path="screenshot.png")
