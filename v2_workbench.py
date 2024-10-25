@@ -1,6 +1,7 @@
 from playwright.sync_api import sync_playwright
 
 import nonmodify.web_info_v2 as wi2
+import nonmodify.process_classes_v2 as pc2
 import nonmodify.logger_helper as lh
 import const_config as cc
 
@@ -33,6 +34,9 @@ with sync_playwright() as p:
 
     result = wi2.scan_boxes(page)
     lh.write_file("v2test.txt", result)
+
+    result = pc2.standardize_course_data(result)
+    lh.write_file("v2standardized", result)
 
     input("Press Enter to close the browser...")
 

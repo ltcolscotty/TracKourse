@@ -1,29 +1,40 @@
-def standardize_course_data(input_data):
-    # Split the input data by double newlines to separate each course entry
-    courses = input_data.strip().split("\n\n")
+def standardize_reg(input_data):
+    lines = input_data.split("\n")
+    standardized_lines = []
 
-    standardized_courses = []
+    for idx, line in enumerate(lines):
+        cleaned_line = line.strip().replace("�", "")
+        if cleaned_line:
+            if idx == 0 or "|" in cleaned_line or "of 15" in cleaned_line:
+                standardized_lines.append(cleaned_line)
+            elif idx == 2:  # Instructor name
+                standardized_lines.append(cleaned_line)
+            elif "Tempe" not in cleaned_line:
+                standardized_lines[-1] += " " + cleaned_line
 
-    for course in courses:
-        # Split each course entry by newline
-        lines = course.split("\n")
+    return "\n".join(standardized_lines)
 
-        # Correct any encoding issues (e.g., replace � with appropriate characters)
-        corrected_lines = [line.replace("�", "") for line in lines]
 
-        # Reformat the time range if necessary
-        for i, line in enumerate(corrected_lines):
-            if "Multiple dates and times" in line:
-                # Fix the time range formatting
-                corrected_lines[i] = line.replace("AM\n", "AM - ").replace(
-                    "PM\n", "PM - "
-                )
+def standardize_hybrid(input_data):
+    lines = input_data.split("\n")
+    corrected_lines = []
 
-        # Join the corrected lines back together
-        standardized_course = "\n".join(corrected_lines).strip()
+    time_info = ""
+    for i, line in enumerate(lines):
+        cleaned_line = line.strip().replace("�", "")
 
-        # Append to the list of standardized courses
-        standardized_courses.append(standardized_course)
+        if not cleaned_line:
+            continue
 
-    # Join all standardized courses with double newlines
-    return "\n\n".join(standardized_courses)
+        if "Multiple dates and times" in cleaned_line or "Hybrid" in cleaned_line:
+            time_info = cleaned_line.replace("Multiple dates and times", "Hybrid")
+        elif "-" in cleaned_line and time_info:
+            time_info += " " + cleaned_line
+            corrected_lines.append(time_info)
+            time_info = ""
+        elif "Tempe" in cleaned_line or "Internet - Hybrid" in cleaned_line:
+            continue
+        else:
+            corrected_lines.append(cleaned_line)
+
+    return "\n".join(corrected_lines)
