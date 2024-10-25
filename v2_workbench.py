@@ -21,11 +21,13 @@ for specification in cc.class_list:
 
 with sync_playwright() as p:
     # Launch the browser
-    browser = p.chromium.launch(headless=False, channel="chrome")
+    browser = p.chromium.launch(
+        headless=False, channel="chrome", args=["--start-maximized"]
+    )
     page = browser.new_page()
 
     # Navigate to the constructed URL
-    url = url_list[1]
+    url = url_list[2]
     page.goto(url)
 
     result = wi2.scan_boxes(page)
