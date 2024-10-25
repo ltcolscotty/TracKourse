@@ -33,7 +33,7 @@ def scan_boxes(page):
     try:
         # Wait for the class results to be present
         page.wait_for_selector("#class-results")
-        
+
         print("class results loaded detected")
 
         # Find the container with class information

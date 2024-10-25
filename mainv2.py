@@ -13,7 +13,7 @@ for specification in cc.class_list:
             specification.nbr,
             specification.location.upper(),
             specification.session,
-            cc.url_year
+            cc.url_year,
         )
     )
 
