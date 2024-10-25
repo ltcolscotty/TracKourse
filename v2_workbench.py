@@ -22,9 +22,7 @@ for specification in cc.class_list:
 with sync_playwright() as p:
     # Launch the browser
     browser = p.chromium.launch(
-        headless=False,
-        channel="chrome",
-        args=["--start-maximized"]
+        headless=False, channel="chrome", args=["--start-maximized"]
     )
     context = browser.new_context(no_viewport=True)
     page = context.new_page()
