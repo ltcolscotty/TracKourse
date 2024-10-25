@@ -2,7 +2,6 @@
 searches to reduce instances of wrong results showing up"""
 
 
-# Location should be something like TEMPE, ICOURSE, or something like that
 def get_search_url(subject, catalog_number, campus, session, term):
     """Gets filtered URL based on inputs
     Args:
