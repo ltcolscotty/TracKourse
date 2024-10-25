@@ -1,5 +1,6 @@
 """Debugging tools"""
 
+
 def write_file(filename, content):
     """Writes output to specified file
     Args:

@@ -260,18 +260,17 @@ def filter_info(agg_data, workingClass: ci):
                 and isBefore(class_data["End time"], end_prefer)
             )
             # Check Days
-            and (
-                days.contains(class_data["Days"])
-            )
-
+            and (days.contains(class_data["Days"]))
         ):
-            returned_ids.append({
-                "ID": class_data["Class_ID"], 
-                "Professors": class_data["Professors"], 
-                "Start time": class_data["Start_time"],
-                "End time": class_data["End_time"],
-                "Days": class_data["Days"]
-                })
+            returned_ids.append(
+                {
+                    "ID": class_data["Class_ID"],
+                    "Professors": class_data["Professors"],
+                    "Start time": class_data["Start_time"],
+                    "End time": class_data["End_time"],
+                    "Days": class_data["Days"],
+                }
+            )
 
 
 def isAfter(input_time: str, target: datetime):
