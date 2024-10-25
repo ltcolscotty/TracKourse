@@ -36,7 +36,7 @@ with sync_playwright() as p:
     lh.write_file("v2test.txt", result)
 
     result = pc2.standardize_course_data(result)
-    lh.write_file("v2standardized", result)
+    lh.write_file("v2standardized.txt", result)
 
     input("Press Enter to close the browser...")
 
