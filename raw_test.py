@@ -1,18 +1,20 @@
-def standardize_reg(input_data):
-    lines = input_data.split("\n")
-    standardized_lines = []
+import re
 
-    for idx, line in enumerate(lines):
-        cleaned_line = line.strip().replace("�", "")
-        if cleaned_line:
-            if idx == 0 or "|" in cleaned_line or "of 15" in cleaned_line:
-                standardized_lines.append(cleaned_line)
-            elif idx == 2:  # Instructor name
-                standardized_lines.append(cleaned_line)
-            elif "Tempe" not in cleaned_line:  # Skip campus and classroom info
-                standardized_lines[-1] += " " + cleaned_line
-
-    return "\n".join(standardized_lines)
+def group_class_strings(class_string, full_code):
+    # Escape special characters in the course code for regex
+    full_code = re.escape(full_code)
+    
+    # Regular expression to match the entire class entry
+    pattern = rf'({full_code}\n.*?)\n(\d+ of \d+)(?=\n\n{full_code}|\Z)'
+    matches = re.finditer(pattern, class_string, re.DOTALL)
+    
+    result = []
+    for match in matches:
+        class_info = match.group(1).strip()
+        capacity = match.group(2)
+        result.append(f"{class_info}\n{capacity}")
+    
+    return result
 
 
 # Test input for debugging
@@ -65,16 +67,9 @@ Tempe - CRTVC207
 13 of 15
 """
 
-case = """ENG 102
-10155
-Z�dan Xelef Almito
-M W F | 12:20 PM - 1:10 PM
-Tempe - WLSN112
-5 of 15"""
-
-print(case)
-print("---")
-
 # Execute the function and correct the formatting
-standardized_data = standardize_reg(case)
-print(standardized_data)
+standardized_data = group_class_strings(input_data, 'ENG 102')
+for i in standardized_data:
+    print("---")
+    print(i)
+    print("---")
