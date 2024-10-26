@@ -1,5 +1,7 @@
 import re
 
+from nonmodify.class_info import class_info as ci
+
 
 def group_class_strings(class_string, full_code):
     """Groups classes together
@@ -108,3 +110,21 @@ def is_not_hybrid(course_input):
 
     # If all checks pass, it's a non-hybrid course
     return True
+
+
+def standardize(input, class_info: ci):
+    """Standardizes total input
+    Args:
+        input: str - raw preprocessed input
+        class_info: nonmodify.class_info.class_info - current class selection
+    Returns:
+        list[str]: Standardized info
+    """
+    info_list = group_class_strings(input, class_info.fullcode)
+    for i, course in enumerate(info_list):
+        if is_not_hybrid(course):
+            info_list[i] = standardize_reg(course)
+        else:
+            info_list[i] = standardize_hybrid(course)
+
+    return info_list

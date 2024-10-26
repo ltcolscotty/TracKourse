@@ -1,19 +1,20 @@
 import re
 
+
 def group_class_strings(class_string, full_code):
     # Escape special characters in the course code for regex
     full_code = re.escape(full_code)
-    
+
     # Regular expression to match the entire class entry
-    pattern = rf'({full_code}\n.*?)\n(\d+ of \d+)(?=\n\n{full_code}|\Z)'
+    pattern = rf"({full_code}\n.*?)\n(\d+ of \d+)(?=\n\n{full_code}|\Z)"
     matches = re.finditer(pattern, class_string, re.DOTALL)
-    
+
     result = []
     for match in matches:
         class_info = match.group(1).strip()
         capacity = match.group(2)
         result.append(f"{class_info}\n{capacity}")
-    
+
     return result
 
 
@@ -68,7 +69,7 @@ Tempe - CRTVC207
 """
 
 # Execute the function and correct the formatting
-standardized_data = group_class_strings(input_data, 'ENG 102')
+standardized_data = group_class_strings(input_data, "ENG 102")
 for i in standardized_data:
     print("---")
     print(i)
