@@ -12,8 +12,7 @@ Running this should:
 - View the professor, if the professor and class code match, a notification will be sent to the email or phone number desired.
 
 ## To-Do:
-- Restructure to use playwright instead of selenium for increased speeds
-- Use smtplib to implement send message function
+- (2025) Implement search_by_id to get more focused results
 
 ## Setup
 
