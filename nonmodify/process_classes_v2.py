@@ -1,4 +1,5 @@
 import re
+from datetime import datetime
 
 from nonmodify.class_info import class_info as ci
 
@@ -169,3 +170,82 @@ def process_class(input_string):
     }
 
     return result
+
+
+def filter_info(agg_data, workingClass: ci):
+    """Processes dictionary data
+    Args:
+        agg_data: Dict - processed data in dictionary format
+        workingClass: class_info.class_info - class of interest
+    Returns:
+        list[int] - class codes that match and have spots
+    """
+    # unpack info for quick reference
+    class_code = workingClass.fullcode
+    location = workingClass.location
+    professors = workingClass.professor_list
+    hybrid_allowed = workingClass.hybrid
+    iCourse_allowed = workingClass.iCourse
+    start_prefer = workingClass.start
+    end_prefer = workingClass.end
+    days = workingClass.days
+
+    returned_ids = []
+    for class_data in agg_data:
+        if (
+            # Verify class code
+            (class_data["Class"] == class_code)
+            # Check for spots left
+            and (class_data["Spots left"] > 0)
+            # Check location
+            and (
+                (location in class_data["Location"])
+                or (hybrid_allowed and "Hybrid" in class_data["Location"])
+                or (iCourse_allowed and "iCourse" in class_data["Location"])
+            )
+            # Check professors
+            and (
+                (not professors)
+                or (prof in workingClass["Professors"] for prof in professors)
+            )
+            # Check time
+            and (
+                isAfter(class_data["Start time"], start_prefer)
+                and isBefore(class_data["End time"], end_prefer)
+            )
+            # Check Days
+            and (days.contains(class_data["Days"]))
+        ):
+            returned_ids.append(
+                {
+                    "ID": class_data["Class_ID"],
+                    "Professors": class_data["Professors"],
+                    "Start time": class_data["Start_time"],
+                    "End time": class_data["End_time"],
+                    "Days": class_data["Days"],
+                }
+            )
+
+
+def isAfter(input_time: str, target: datetime):
+    """Determines if the input is after the target (input is after target)
+    Args:
+        input_time: str - time to compare
+        target: datetime - time to compare to
+    Returns:
+        bool: whether input is after target
+    """
+    input_time = datetime.strptime(input_time, "%I:%M %p")
+    return input_time > target
+
+
+def isBefore(input_time: str, target: datetime):
+    """Determines if the input is before the target (input is before target)
+    Args:
+        input_time: str - time to compare
+        target: datetime - time to compare to
+    Returns:
+        bool: Whether input is before target
+    """
+    input_time = datetime.strptime(input_time, "%I:%M %p")
+    return input_time < target
