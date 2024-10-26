@@ -121,6 +121,8 @@ def standardize(input, class_info: ci):
         list[str]: Standardized info
     """
     info_list = group_class_strings(input, class_info.fullcode)
+    print(class_info.fullcode)
+    print(info_list)
     for i, course in enumerate(info_list):
         if is_not_hybrid(course):
             info_list[i] = standardize_reg(course)
@@ -128,3 +130,42 @@ def standardize(input, class_info: ci):
             info_list[i] = standardize_hybrid(course)
 
     return info_list
+
+
+def process_class(input_string):
+    lines = input_string.strip().split("\n")
+
+    if len(lines) != 5:
+        raise ValueError("Input must contain exactly 5 lines.")
+
+    course = lines[0].strip()
+    course_id = lines[1].strip()
+    instructor = lines[2].strip()
+    schedule_line = lines[3].strip()
+    capacity_line = lines[4].strip()
+
+    if "Hybrid" in schedule_line:
+        days = "Hybrid"
+        time_info = schedule_line.split("|")[1].strip()
+    else:
+        days, time_info = schedule_line.split("|")
+        days = days.strip()
+
+    start_time, end_time = time_info.strip().split("-")
+    start_time = start_time.strip()
+    end_time = end_time.strip()
+
+    open_spots, total_spots = map(int, capacity_line.split("of"))
+    is_open = open_spots > 0
+
+    result = {
+        "Course": course,
+        "ID": course_id,
+        "Instructor": instructor,
+        "Days": days,
+        "Start time": start_time,
+        "End time": end_time,
+        "Open": is_open,
+    }
+
+    return result

@@ -1,5 +1,8 @@
 import re
 
+import nonmodify.process_classes_v2 as pc2
+from nonmodify.class_info import class_info
+
 
 def group_class_strings(class_string, full_code):
     # Escape special characters in the course code for regex
@@ -18,9 +21,18 @@ def group_class_strings(class_string, full_code):
     return result
 
 
+tester_class = class_info(
+    "ENG",
+    "102",
+    professor_list=["William Martin", "Brian Bender"],
+    location="TEMPE",
+    start="9:00AM",
+    end="5:00PM",
+    id_list=["12974", "10164", "10154", "19917", "23061", "25462"],
+)
+
 # Test input for debugging
-input_data = """
-ENG 102
+input_data = """ENG 102
 10148
 Richard Hart
 T Th | 1:30 PM - 2:45 PM
@@ -69,8 +81,8 @@ Tempe - CRTVC207
 """
 
 # Execute the function and correct the formatting
-standardized_data = group_class_strings(input_data, "ENG 102")
+standardized_data = pc2.standardize(input_data, tester_class)
 for i in standardized_data:
     print("---")
-    print(i)
+    print(pc2.process_class(i))
     print("---")
