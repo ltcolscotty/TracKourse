@@ -32,7 +32,7 @@ class class_info:
         self.professor_list = professor_list
         self.location = location.upper()
         self.honors = honors
-        self.fullcode = self.subj + self.nbr
+        self.fullcode = f"{self.subj} {self.nbr}"
         self.required = required
         self.hybrid = hybrid_allowed
         self.iCourse = iCourse_allowed
