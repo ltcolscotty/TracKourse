@@ -13,6 +13,7 @@ Running this should:
 
 ## To-Do:
 - Restructure to use playwright instead of selenium for increased speeds
+- Use smtplib to implement send message function
 
 ## Setup
 
@@ -20,4 +21,8 @@ Running this should:
 2. Run to install playwright tools ```playwright install```
 3. Set up ```const_config.py``` with the classes that are desired
 4. Run main.py; preferably keep it as a background task while you're out and about during the day and shut it down before you go to bed when you aren't going to want to recieve messages.
----
+
+## Curious about how this works?
+Most of the main code uses default python packages, with the exception of these packages<br>
+- Webscraping tool: ``Playwright``
+- Message Sending: ```smtplib```
