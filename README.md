@@ -1,5 +1,5 @@
-# NotifyRegisterASU
-Project for automating notifications for asu
+# TracKourseASU
+Project for automating seat monitoring for courses during registering for asu
 
 The goal of this project:
 Periodically scan through desired class codes. This project assumes the student has done their due dilligence on what classes they are qualified to take and that they've planned out their schedule.
