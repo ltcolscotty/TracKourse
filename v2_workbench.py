@@ -28,16 +28,6 @@ with sync_playwright() as p:
     context = browser.new_context(no_viewport=True)
     page = context.new_page()
 
-    # Navigate to the constructed URL
-    url = url_list[2]
-    page.goto(url)
-
-    result = wi2.scan_boxes(page)
-    lh.write_file("v2test.txt", result)
-
-    result = pc2.standardize(result)
-    lh.write_file("v2standardized.txt", result)
-
     input("Press Enter to close the browser...")
 
     # Close the browser

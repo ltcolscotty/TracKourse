@@ -1,6 +1,8 @@
 """V2 implementation serves to use playwright for faster scraping, and direct URL
 searches to reduce instances of wrong results showing up"""
 
+from playwright.sync_api import expect
+
 
 def get_search_url(subject, catalog_number, campus, session, term):
     """Gets filtered URL based on inputs
@@ -69,3 +71,57 @@ def scan_boxes(page):
     except Exception as e:
         print(f"An error occurred: {e}")
         return ""
+
+
+def found_results(page, timeout=5000):
+    """Checks for if there are class results
+    Args:
+        page: playwright page
+        timeout: timout time in ms
+
+    Returns:
+        bool: if results were found or not
+    """
+    class_results_div = page.locator("div.class-results")
+    try:
+        class_results_div.wait_for(state="attached", timeout=timeout)
+    except TimeoutError:
+        raise Exception("Timeout waiting for div.class-results to appear")
+
+    class_accordions = page.locator("div.class-results >> .class-accordion")
+    no_classes_message = page.locator("div.class-results").get_by_text(
+        "No classes found"
+    )
+
+    # Wait for either condition to be met
+    result = page.wait_for_function(
+        """
+        () => {
+            const accordions = document.querySelectorAll('div.class-results .class-accordion');
+            const noClassesMessage = document.evaluate(
+                "//div[contains(@class, 'class-results')]//text()[contains(., 'No classes found')]",
+                document,
+                null,
+                XPathResult.FIRST_ORDERED_NODE_TYPE,
+                null
+            ).singleNodeValue;
+            return {
+                accordionsFound: accordions.length > 0,
+                noClassesFound: !!noClassesMessage && noClassesMessage.isConnected
+            };
+        }
+    """,
+        timeout=timeout,
+    )
+
+    # Check which condition was met
+    if result.evaluate("result => result.accordionsFound"):
+        return True
+    elif result.evaluate("result => result.noClassesFound"):
+        print("No classes were found")
+        expect(no_classes_message).to_be_visible()
+        return False
+    else:
+        raise Exception(
+            "Unexpected state: Neither class accordions nor 'No classes found' message were present"
+        )
