@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from email.message import EmailMessage
 import smtplib
 
-from nonmodify.class_info import class_info as ci
+import const_config as cc
 
 # Load environment variables from .env file
 load_dotenv()
@@ -132,4 +132,21 @@ def construct_email(course_list):
         """
     
     return body
-        
+
+
+def send_alerts(course_list):
+    """Handles alerts with the differences list
+    Args:
+        course_list: list - List of courses that are open with the most recent update
+    """
+    if not course_list:
+        pass
+    else:
+        match cc.notif_method:
+            case "sms" | "both":
+                for course in course_list:
+                    send_sms(construct_sms(course))
+            case "email" | "both":
+                send_email(construct_email(course_list))
+            case _:
+                raise ValueError("Invalid notif_method in course_config.py, use 'sms', 'email' or 'both'")
