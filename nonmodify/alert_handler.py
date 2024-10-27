@@ -65,11 +65,32 @@ def send_sms(
         print(f"Failed to send SMS: {str(e)}")
 
 
+def send_email(subject, body, is_html=False):
+
+    to_email = os.getenv("TARGET_EMAIL")
+    from_email = os.getenv("SENDER_EMAIL")
+    password = os.getenv("SENDER_PASSWORD")
+
+    msg = EmailMessage()
+    msg["Subject"] = subject
+    msg["From"] = from_email
+    msg["To"] = to_email
+
+    if is_html:
+        msg.set_content(body, subtype="html")
+    else:
+        msg.set_content(body)
+
+    try:
+        with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
+            smtp.starttls()
+            smtp.login(from_email, password)
+            smtp.send_message(msg)
+        print("Email sent successfully.")
+    except Exception as e:
+        print(f"Failed to send email: {e}")
+
+
 send_sms(
     message="Hello from Python!",
 )
-
-
-def send_mail():
-    """Should take formatted aggregated data and send to inbox."""
-    pass
