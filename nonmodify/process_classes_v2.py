@@ -251,3 +251,15 @@ def isBefore(input_time: str, target: datetime):
     """
     input_time = datetime.strptime(input_time, "%I:%M %p")
     return input_time < target
+
+
+def compare_results(prev_results, cur_results):
+    """Compares results and returns the difference if there are any
+    Args:
+        prev_results: list[dict] - list of classes from previous update
+        cur_results: list[dict] - list of classes from current update to be processed
+
+    Returns:
+        list[dict] - list of new classes
+    """
+    pass
