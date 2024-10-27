@@ -3,7 +3,7 @@ from nonmodify.class_info import class_info
 """
 This file should contain:
 
-notif_method, url_year, and class_list
+notif_method, url_year, wait_time, and class_list
 
 class_info format:
     subj: Subject code (eg. [ENG] 101)
@@ -22,6 +22,8 @@ class_info format:
 """
 # Set according to method you want: [email, sms, both]
 notif_method = "sms"
+
+wait_time = 15
 
 url_year = 2251  # configure based on current year url (eg. 2025 spring is 2551, 2557 is probably 2025 fall)
 
