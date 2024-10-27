@@ -5,13 +5,15 @@ from dotenv import load_dotenv
 from email.message import EmailMessage
 import smtplib
 
+from nonmodify.class_info import class_info as ci
+
 # Load environment variables from .env file
 load_dotenv()
 
 
 def send_sms(
     message: str,
-    subject: str = "NotifyRegisterASU Notification",
+    subject: str = "TracKourseASU",
     smtp_server: str = "smtp.gmail.com",
     smtp_port: int = 587,
 ):
@@ -60,7 +62,7 @@ def send_sms(
             smtp.starttls()
             smtp.login(sender_email, email_password)
             smtp.send_message(msg)
-        print("SMS sent successfully")
+        print("SMS alert sent successfully")
     except Exception as e:
         print(f"Failed to send SMS: {str(e)}")
 
@@ -94,3 +96,22 @@ def send_email(body, subject, is_html=False):
         print("Email sent successfully.")
     except Exception as e:
         print(f"Failed to send email: {e}")
+
+
+def construct_sms(course):
+    """Creates SMS message for one class
+    Args:
+        course: dict - dictionary for course info
+
+    Returns:
+        str: formatted text message
+    """
+    return (
+        f"""Course seat opened!
+        Course ID: {course["ID"]}
+        Instructors: {course["Professors"]}
+        Days: {course["Days"]}
+        Start: {course["Start_time"]}
+        End: {course["End_time"]}
+        """
+    )
