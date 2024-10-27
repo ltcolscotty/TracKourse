@@ -9,13 +9,13 @@ import const_config as cc
 url_list = []
 
 # puts url variables in scope for efficiency
-for specification in cc.class_list:
+for course in cc.class_list:
     url_list.append(
         wi2.get_search_url(
-            specification.subj,
-            specification.nbr,
-            specification.location.upper(),
-            specification.session,
+            course.subj,
+            course.nbr,
+            course.location.upper(),
+            course.session,
             cc.url_year,
         )
     )
