@@ -31,13 +31,17 @@ with sync_playwright() as p:
         page.goto(url)
 
         # Get information found
-        result_list = wi2.scan_boxes(page)
-        result_list = pc2.standardize(result_list)
+        if wi2.found_results(page):
+            print(f"Log: Open results for {cc.class_list[index_url].fullcode}")
+            result_list = wi2.scan_boxes(page)
+            result_list = pc2.standardize(result_list)
 
-        # Process each course
-        for index_course, course in enumerate(result_list):
-            result_list[index_course] = pc2.process_class(course)
+            # Process each course
+            for index_course, course in enumerate(result_list):
+                result_list[index_course] = pc2.process_class(course)
 
-        result_list = pc2.filter_info(result_list, cc.class_list[index_url])
+            result_list = pc2.filter_info(result_list, cc.class_list[index_url])
+        else:
+            print(f"Log: No open results for {cc.class_list[index_url].fullcode}")
 
     browser.close()
