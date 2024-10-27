@@ -65,8 +65,13 @@ def send_sms(
         print(f"Failed to send SMS: {str(e)}")
 
 
-def send_email(subject, body, is_html=False):
-
+def send_email(body, subject, is_html=False):
+    """Sends email to configured email address
+    Args:
+        body: body of email content
+        subject: title
+        is_html: body type
+    """
     to_email = os.getenv("TARGET_EMAIL")
     from_email = os.getenv("SENDER_EMAIL")
     password = os.getenv("SENDER_PASSWORD")
@@ -89,8 +94,3 @@ def send_email(subject, body, is_html=False):
         print("Email sent successfully.")
     except Exception as e:
         print(f"Failed to send email: {e}")
-
-
-send_sms(
-    message="Hello from Python!",
-)

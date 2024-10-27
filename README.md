@@ -20,7 +20,8 @@ Running this should:
 2. Run to install playwright tools ```playwright install```
 3. Set up ```const_config.py``` with the classes that are desired
 4. Set up ```.env```: Create a file in this folder named '.env' and follow the instructions in the env setup
-5. Run main.py; preferably keep it as a background task while you're out and about during the day and shut it down before you go to bed when you aren't going to want to recieve messages.
+5. Run the command: ```python alert_test.py```, if you recieve your messages in the specified email or phone number, you can continue
+6. Run main.py with ```python main.py```, use ctrl+c to stop the program if you need to make adjustments to constants and rerun the program
 
 ## .env file setup:
 
