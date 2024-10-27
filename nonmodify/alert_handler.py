@@ -115,3 +115,21 @@ def construct_sms(course):
         End: {course["End_time"]}
         """
     )
+
+
+def construct_email(course_list):
+    """Constructs format for email notifications
+    Args:
+        course_list: list of course info dictionaries
+    
+    Returns:
+        str: formatted email body
+    """
+    body = ""
+    for course in course_list:
+        body += f"""{construct_sms(course)}
+
+        """
+    
+    return body
+        
