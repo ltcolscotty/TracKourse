@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 
-import nonmodify.driver_installation_methods as dim
+import v1_archive.driver_installation_methods as dim
 
 chromedriver_path = dim.setup_chromedriver()
 

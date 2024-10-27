@@ -14,7 +14,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.common.exceptions import TimeoutException
 
-from nonmodify.driver_installation_methods import get_chromedriver_path
+from v1_archive.driver_installation_methods import get_chromedriver_path
 
 import v1_archive.web_info as wi
 import v1_archive.process_classes as aggregator
