@@ -35,7 +35,7 @@ with sync_playwright() as p:
     result = wi2.scan_boxes(page)
     lh.write_file("v2test.txt", result)
 
-    result = pc2.standardize_course_data(result)
+    result = pc2.standardize(result)
     lh.write_file("v2standardized.txt", result)
 
     input("Press Enter to close the browser...")

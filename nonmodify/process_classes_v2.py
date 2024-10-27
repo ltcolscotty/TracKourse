@@ -189,6 +189,7 @@ def filter_info(agg_data, workingClass: ci):
     start_prefer = workingClass.start
     end_prefer = workingClass.end
     days = workingClass.days
+    ID_list = workingClass.id
 
     returned_ids = []
     for class_data in agg_data:
@@ -215,6 +216,7 @@ def filter_info(agg_data, workingClass: ci):
             )
             # Check Days
             and (days.contains(class_data["Days"]))
+            or (class_data["ID"] in ID_list)
         ):
             returned_ids.append(
                 {

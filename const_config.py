@@ -21,9 +21,9 @@ class_info format:
 
 """
 # Set according to method you want: [email, sms, both]
-notif_method = "sms" 
+notif_method = "sms"
 
-url_year = 2251 #configure based on current year url (eg. 2025 spring is 2551, 2557 is probably 2025 fall)
+url_year = 2251  # configure based on current year url (eg. 2025 spring is 2551, 2557 is probably 2025 fall)
 
 # Add or delete class entries as needed. If you have a specific hybrid course you are looking for, specify the ID, it is a feasible workaround for filtering
 class_list = [

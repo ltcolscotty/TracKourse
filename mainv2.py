@@ -1,3 +1,5 @@
+import time
+
 from playwright.sync_api import sync_playwright
 
 import nonmodify.web_info_v2 as wi2
@@ -26,7 +28,6 @@ with sync_playwright() as p:
     # Navigate to the constructed URL
     for url in url_list:
         page.goto(url)
-        # do the scraping stuff
 
     # Perform any additional actions if needed
     # For example: page.screenshot(path="screenshot.png")
