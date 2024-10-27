@@ -3,6 +3,7 @@ import time
 from playwright.sync_api import sync_playwright
 
 import nonmodify.web_info_v2 as wi2
+import nonmodify.process_classes_v2 as pc2
 import const_config as cc
 
 url_list = []
@@ -26,11 +27,17 @@ with sync_playwright() as p:
     page = browser.new_page()
 
     # Navigate to the constructed URL
-    for url in url_list:
+    for index, url in enumerate(url_list):
         page.goto(url)
 
-    # Perform any additional actions if needed
-    # For example: page.screenshot(path="screenshot.png")
+        # Get information found
+        result_list = wi2.scan_boxes(page)
+        result_list = pc2.standardize(result_list)
 
-    # Close the browser
+        # Process each course
+        for index, course in enumerate(result_list):
+            result_list[index] = pc2.process_class(course)
+
+        result_list = pc2.filter_info(result_list, cc.class_list[index])
+
     browser.close()
