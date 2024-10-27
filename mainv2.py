@@ -27,7 +27,7 @@ with sync_playwright() as p:
     page = browser.new_page()
 
     # Navigate to the constructed URL
-    for index, url in enumerate(url_list):
+    for index_url, url in enumerate(url_list):
         page.goto(url)
 
         # Get information found
@@ -35,9 +35,9 @@ with sync_playwright() as p:
         result_list = pc2.standardize(result_list)
 
         # Process each course
-        for index, course in enumerate(result_list):
-            result_list[index] = pc2.process_class(course)
+        for index_course, course in enumerate(result_list):
+            result_list[index_course] = pc2.process_class(course)
 
-        result_list = pc2.filter_info(result_list, cc.class_list[index])
+        result_list = pc2.filter_info(result_list, cc.class_list[index_url])
 
     browser.close()
