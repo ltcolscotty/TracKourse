@@ -4,8 +4,10 @@ Project for automating notifications for asu
 The goal of this project:
 Periodically scan through desired class codes. This project assumes the student has done their due dilligence on what classes they are qualified to take and that they've planned out their schedule.
 - Effectively, this will be a self-hosted, free for all version of a service like courseer with delay only being limited
-by the server load balancing of ASU's class search system and the internet speed the device running the program has access to. 
+by the server load balancing of ASU's class search system and the internet speed the device running the program has access to
 - This project is expected to be maintained until 2028 with continual updates to adjust for UI changes on the class search site as needed.
+- Advantages of using this project: Free (i like free stuff), No limit on classes you can track, the only bottleneck is internet and hardware speed
+- Potential cons: Not the most user friendly config and running experience (yet), but I've written plenty of documention to alleviate this as much as possible
 
 Running this should:
 - Search the class portal for open spots
@@ -13,6 +15,8 @@ Running this should:
 
 ## To-Do:
 - (2025) Implement search_by_id to get more focused results
+- (2025) Proper hybrid class handling
+- (2025) Docker container & instructions for easy and consistent deployment
 
 ## Setup
 
@@ -71,3 +75,5 @@ CARRIER='att'
 Most of the main code uses default python packages, with the exception of these packages<br>
 - Webscraping tool: ``Playwright``
 - Message Sending: ```smtplib```
+
+Copyright © Aidan Yung
