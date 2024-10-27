@@ -1,6 +1,6 @@
 import re
 
-import nonmodify.process_classes_v2 as pc2
+import nonmodify.process_classes as pc2
 from nonmodify.class_info import class_info
 
 
