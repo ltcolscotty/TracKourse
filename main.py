@@ -27,33 +27,47 @@ def main():
     previous_lists = [[] for i in range(len(cc.class_list))]
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False, channel="chrome")
-        page = browser.new_page()
+        try:
+            while True:
+                browser = p.chromium.launch(headless=False, channel="chrome")
+                page = browser.new_page()
 
-        for index_url, url in enumerate(url_list):
-            page.goto(url)
+                for index_url, url in enumerate(url_list):
+                    page.goto(url)
 
-            # Get information found
-            if wi2.found_results(page):
-                print(f"Log: Open results for {cc.class_list[index_url].fullcode}")
-                result_list = wi2.scan_boxes(page)
-                result_list = pc2.standardize(result_list)
+                    # Get information found
+                    if wi2.found_results(page):
+                        print(
+                            f"Log: Open results for {cc.class_list[index_url].fullcode}"
+                        )
+                        result_list = wi2.scan_boxes(page)
+                        result_list = pc2.standardize(result_list)
 
-                # Process each course
-                for index_course, course in enumerate(result_list):
-                    result_list[index_course] = pc2.process_class(course)
+                        # Process each course
+                        for index_course, course in enumerate(result_list):
+                            result_list[index_course] = pc2.process_class(course)
 
-                result_list = pc2.filter_info(result_list, cc.class_list[index_url])
+                        result_list = pc2.filter_info(
+                            result_list, cc.class_list[index_url]
+                        )
 
-                new_Classes = pc2.compare_results(
-                    previous_lists[index_url], result_list
-                )
+                        new_Classes = pc2.compare_results(
+                            previous_lists[index_url], result_list
+                        )
 
-                alerter.send_alerts(new_Classes)
-            else:
-                print(f"Log: No open results for {cc.class_list[index_url].fullcode}")
+                        alerter.send_alerts(new_Classes)
+                    else:
+                        print(
+                            f"Log: No open results for {cc.class_list[index_url].fullcode}"
+                        )
 
-        browser.close()
+                time.sleep(cc.wait_time)
+
+        except KeyboardInterrupt:
+            print("\nProgram stopped by user")
+        finally:
+            if "browser" in locals():
+                browser.close()
 
 
 if __name__ == "__main__":
