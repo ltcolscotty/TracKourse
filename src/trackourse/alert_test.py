@@ -1,6 +1,7 @@
 import nonmodify.alert_handler as ah
 import const_config as cc
 
+
 def ping():
     match cc.notif_method:
         case "sms":

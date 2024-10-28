@@ -4,6 +4,7 @@ searches to reduce instances of wrong results showing up"""
 from playwright.sync_api import expect
 import const_config as cc
 
+
 def get_search_url(subject, catalog_number, campus, session):
     """Gets filtered URL based on inputs
     Args:
@@ -134,7 +135,5 @@ def url_from_id(id):
         url: str - URL to check results for
     """
     base_url = "https://catalog.apps.asu.edu/catalog/classes/classlist"
-    url = (
-        f"{base_url}?campusOrOnlineSelection=A&honors=F&keywords={id}&promod=F&searchType=open&term={cc.url_year}"
-    )
+    url = f"{base_url}?campusOrOnlineSelection=A&honors=F&keywords={id}&promod=F&searchType=open&term={cc.url_year}"
     return url

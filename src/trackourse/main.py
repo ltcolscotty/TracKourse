@@ -11,7 +11,7 @@ import const_config as cc
 
 def main():
     url_list = []
-    previous_lists=[]
+    previous_lists = []
     # puts url variables in scope for efficiency
     if cc.search_method == "class_list":
         for course in cc.class_list:
@@ -26,13 +26,10 @@ def main():
         previous_lists = [[] for i in range(len(cc.class_list))]
     elif cc.search_method == "id_list":
         for id in cc.id_list:
-            url_list.append(
-                wi2.url_from_id(id)
-            )
+            url_list.append(wi2.url_from_id(id))
         previous_lists = [[] for i in range(len(cc.id_list))]
     else:
         raise Exception("Invalid search method. Check const_config.py's search_method")
-
 
     with sync_playwright() as p:
         try:

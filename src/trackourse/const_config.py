@@ -33,7 +33,7 @@ class_list = [
         location="TEMPE",
         start="9:00AM",
         end="5:00PM",
-        id_list=['12275'],
+        id_list=["12275"],
     ),
 ]
 
