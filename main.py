@@ -20,7 +20,6 @@ def main():
                 course.nbr,
                 course.location.upper(),
                 course.session,
-                cc.url_year,
             )
         )
 

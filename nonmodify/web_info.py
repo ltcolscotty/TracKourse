@@ -2,9 +2,9 @@
 searches to reduce instances of wrong results showing up"""
 
 from playwright.sync_api import expect
+import const_config as cc
 
-
-def get_search_url(subject, catalog_number, campus, session, term):
+def get_search_url(subject, catalog_number, campus, session):
     """Gets filtered URL based on inputs
     Args:
         subject: str - Subject (eg. [MAT] xxx)
@@ -17,10 +17,9 @@ def get_search_url(subject, catalog_number, campus, session, term):
         str: URL to access
     """
     base_url = "https://catalog.apps.asu.edu/catalog/classes/classlist"
-    # Construct the URL with the given parameters
     url = (
         f"{base_url}?campus={campus}&campusOrOnlineSelection=C&catalogNbr={catalog_number}"
-        f"&honors=F&promod=F&searchType=open&session={session}&subject={subject}&term={term}"
+        f"&honors=F&promod=F&searchType=open&session={session}&subject={subject}&term={cc.url_year}"
     )
     return url
 
@@ -124,3 +123,18 @@ def found_results(page, timeout=5000):
         raise Exception(
             "Unexpected state: Neither class accordions nor 'No classes found' message were present"
         )
+
+
+def url_from_id(id):
+    """Gets the url based on searching by class ID
+    Args:
+        id: str - ID of class, 5 digit number
+
+    Returns:
+        url: str - URL to check results for
+    """
+    base_url = "https://catalog.apps.asu.edu/catalog/classes/classlist"
+    url = (
+        f"{base_url}?campusOrOnlineSelection=A&honors=F&keywords={id}&promod=F&searchType=open&term={cc.url_year}"
+    )
+    return url

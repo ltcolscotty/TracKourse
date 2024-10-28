@@ -10,12 +10,9 @@ class_info format:
     nbr: class number (eg. ENG [101])
     session: A, B, C sessions
     professor_list: If you have any preferred professors
-    location: Campus, put the code in caps. [TEMPE, DTPHX, ICOURSE, WEST VALLEY]
+    location: Campus, put the code in caps. [TEMPE, DTPHX, ICOURSE, POLY]
     start: earliest you want to go to class
     end: preferred end time if you don't want a class to go past a certain time
-    honors: I'm not an honors student so this unfortunately isn't a high priority
-    hybrid_allowed: Keep this as false for now, hybrid functionality will be added in the future
-    iCourse_allowed: if you want to take iCourse classes
     id_list: specific class IDs you may want. These are 5 digit numbers
     days: days of the week you want; "M W", "M W F", "T Th" are common ones
 
