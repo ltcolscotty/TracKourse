@@ -88,7 +88,6 @@ def found_results(page, timeout=5000):
     except TimeoutError:
         raise Exception("Timeout waiting for div.class-results to appear")
 
-    class_accordions = page.locator("div.class-results >> .class-accordion")
     no_classes_message = page.locator("div.class-results").get_by_text(
         "No classes found"
     )
