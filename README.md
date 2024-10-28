@@ -13,10 +13,14 @@ Running this should:
 - Search the class portal for open spots
 - View the professor, if the professor and class code match, a notification will be sent to the email or phone number desired.
 
+## System requirements
+- Node.js (https://nodejs.org/en/download/package-manager)
+- Python 3.11.5 or higher (https://www.python.org/downloads/)
+- Windows 10/11
+
 ## To-Do:
-- (2025) Implement search_by_id to get more focused results
 - (2025) Proper hybrid class handling
-- (2025) Docker container & instructions for easy and consistent deployment
+- (2025) Package implementation for easy download and usage
 
 ## Setup
 
