@@ -262,5 +262,9 @@ def compare_results(prev_results, cur_results):
     Returns:
         list[dict] - list of new classes
     """
+
+    if not prev_results:
+        return cur_results
+
     ids_prev = {course["ID"] for course in prev_results}
     return [course for course in cur_results if course["ID"] not in ids_prev]

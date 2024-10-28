@@ -20,6 +20,7 @@ for course in cc.class_list:
         )
     )
 
+previous_lists = [[] for i in range(len(cc.class_list))]
 
 with sync_playwright() as p:
     browser = p.chromium.launch(headless=False, channel="chrome")
@@ -39,6 +40,8 @@ with sync_playwright() as p:
                 result_list[index_course] = pc2.process_class(course)
 
             result_list = pc2.filter_info(result_list, cc.class_list[index_url])
+
+            
         else:
             print(f"Log: No open results for {cc.class_list[index_url].fullcode}")
 
