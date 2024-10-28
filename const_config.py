@@ -73,6 +73,6 @@ class_list = [
     ),
 ]
 
-id_list = [] # 2025 planned feature
+id_list = []  # 2025 planned feature
 
-search_method = "default" # 2025 planned feature
+search_method = "default"  # 2025 planned feature

@@ -106,22 +106,20 @@ def construct_sms(course):
     Returns:
         str: formatted text message
     """
-    return (
-        f"""Course seat opened!
+    return f"""Course seat opened!
         Course ID: {course["ID"]}
         Instructors: {course["Professors"]}
         Days: {course["Days"]}
         Start: {course["Start_time"]}
         End: {course["End_time"]}
         """
-    )
 
 
 def construct_email(course_list):
     """Constructs format for email notifications
     Args:
         course_list: list of course info dictionaries
-    
+
     Returns:
         str: formatted email body
     """
@@ -130,7 +128,7 @@ def construct_email(course_list):
         body += f"""{construct_sms(course)}
 
         """
-    
+
     return body
 
 
@@ -149,4 +147,6 @@ def send_alerts(course_list):
             case "email" | "both":
                 send_email(construct_email(course_list))
             case _:
-                raise ValueError("Invalid notif_method in course_config.py, use 'sms', 'email' or 'both'")
+                raise ValueError(
+                    "Invalid notif_method in course_config.py, use 'sms', 'email' or 'both'"
+                )
