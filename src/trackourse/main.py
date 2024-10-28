@@ -2,9 +2,9 @@ import time
 
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
 
-import nonmodify.web_info as wi2
-import nonmodify.process_classes as pc2
-import nonmodify.alert_handler as alerter
+import src.trackourse.nonmodify.web_info as wi2
+import src.trackourse.nonmodify.process_classes as pc2
+import src.trackourse.nonmodify.alert_handler as alerter
 
 import const_config as cc
 

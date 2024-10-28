@@ -1,7 +1,7 @@
 import re
 from datetime import datetime
 
-from nonmodify.class_info import class_info as ci
+from src.trackourse.nonmodify.class_info import class_info as ci
 
 
 def group_class_strings(class_string, full_code):
@@ -74,7 +74,7 @@ def standardize_hybrid(input_data):
         if "Multiple dates and times" in cleaned_line or "Hybrid" in cleaned_line:
             time_info = cleaned_line.replace("Multiple dates and times", "Hybrid")
         elif "-" in cleaned_line and time_info:
-            time_info += " " + cleaned_line
+            time_info += cleaned_line
             corrected_lines.append(time_info)
             time_info = ""
         elif "Tempe" in cleaned_line or "Internet - Hybrid" in cleaned_line:

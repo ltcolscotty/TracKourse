@@ -2,7 +2,7 @@
 searches to reduce instances of wrong results showing up"""
 
 from playwright.sync_api import expect
-import const_config as cc
+import src.trackourse.const_config as cc
 
 
 def get_search_url(subject, catalog_number, campus, session):
