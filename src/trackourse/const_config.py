@@ -17,12 +17,14 @@ class_info format:
     days: days of the week you want; "M W", "M W F", "T Th" are common ones
 
 """
-# Set according to method you want: [email, sms, both]
+# Set according to method you want: "email", "sms", "both"
 notif_method = "sms"
 
+# Time in seconds between each scan. Avoid setting this to be less than 15 seconds
 wait_time = 15
 
-url_year = 2251  # configure based on current year url (eg. 2025 spring is 2551, 2557 is probably 2025 fall)
+# configure based on current year url (eg. 2025 spring is 2551, 2557 is probably 2025 fall)
+url_year = 2251
 
 # Add or delete class entries as needed. If you have a specific hybrid course you are looking for, specify the ID, it is a feasible workaround for filtering
 class_list = [
@@ -37,7 +39,8 @@ class_list = [
     ),
 ]
 
-id_list = []  # 2025 planned feature
+# should be a list of strings, eg. ['12345', '98765', '45678']
+id_list = []
 
 # Options: class_list, id_list
-search_method = "class_list"  # 2025 planned feature
+search_method = "class_list"
