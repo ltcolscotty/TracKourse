@@ -135,5 +135,5 @@ def url_from_id(id):
         url: str - URL to check results for
     """
     base_url = "https://catalog.apps.asu.edu/catalog/classes/classlist"
-    url = f"{base_url}?campusOrOnlineSelection=A&honors=F&keywords={id}&promod=F&searchType=open&term={cc.url_year}"
+    url = f"{base_url}?campusOrOnlineSelection=A&honors=F&keywords=20{id}&promod=F&searchType=open&term={cc.url_year}"
     return url
