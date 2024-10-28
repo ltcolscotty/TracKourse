@@ -30,13 +30,13 @@ url_year = 2251  # configure based on current year url (eg. 2025 spring is 2551,
 # Add or delete class entries as needed. If you have a specific hybrid course you are looking for, specify the ID, it is a feasible workaround for filtering
 class_list = [
     class_info(
-        "ENG",
-        "102",
-        professor_list=["William Martin", "Brian Bender"],
+        "MAT",
+        "243",
+        professor_list=["Ajith Nair", "Haiyan Wang", "Hedvig Mohacsy"],
         location="TEMPE",
         start="9:00AM",
         end="5:00PM",
-        id_list=["12974", "10164", "10154", "19917", "23061", "25462"],
+        id_list=['12275'],
     ),
 ]
 

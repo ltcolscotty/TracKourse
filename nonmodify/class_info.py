@@ -19,10 +19,6 @@ class class_info:
         location: str = "TEMPE",
         start: str = None,
         end: str = None,
-        honors: bool = False,
-        required: bool = True,
-        hybrid_allowed: bool = False,
-        iCourse_allowed: bool = False,
         id_list: list[str] = None,
         days: list[str] = ["M W F", "T Th", "M W", "M", "T", "W", "Th", "F"],
     ):
@@ -31,11 +27,7 @@ class class_info:
         self.session = session.upper()
         self.professor_list = professor_list
         self.location = location.upper()
-        self.honors = honors
         self.fullcode = f"{self.subj} {self.nbr}"
-        self.required = required
-        self.hybrid = hybrid_allowed
-        self.iCourse = iCourse_allowed
         self.days = days
 
         if id is not None:

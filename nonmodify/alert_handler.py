@@ -110,8 +110,8 @@ def construct_sms(course):
         Course ID: {course["ID"]}
         Instructors: {course["Professors"]}
         Days: {course["Days"]}
-        Start: {course["Start_time"]}
-        End: {course["End_time"]}
+        Start: {course["Start time"]}
+        End: {course["End time"]}
         """
 
 

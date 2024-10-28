@@ -123,7 +123,6 @@ def standardize(input, class_info: ci):
     """
     info_list = group_class_strings(input, class_info.fullcode)
     print(class_info.fullcode)
-    print(info_list)
     for i, course in enumerate(info_list):
         if is_not_hybrid(course):
             info_list[i] = standardize_reg(course)
@@ -182,10 +181,7 @@ def filter_info(agg_data, workingClass: ci):
     """
     # unpack info for quick reference
     class_code = workingClass.fullcode
-    location = workingClass.location
     professors = workingClass.professor_list
-    hybrid_allowed = workingClass.hybrid
-    iCourse_allowed = workingClass.iCourse
     start_prefer = workingClass.start
     end_prefer = workingClass.end
     days = workingClass.days
@@ -195,15 +191,9 @@ def filter_info(agg_data, workingClass: ci):
     for class_data in agg_data:
         if (
             # Verify class code
-            (class_data["Class"] == class_code)
+            (class_data["Course"] == class_code)
             # Check for spots left
-            and (class_data["Spots left"] > 0)
-            # Check location
-            and (
-                (location in class_data["Location"])
-                or (hybrid_allowed and "Hybrid" in class_data["Location"])
-                or (iCourse_allowed and "iCourse" in class_data["Location"])
-            )
+            and (class_data["Open"])
             # Check professors
             and (
                 (not professors)
@@ -215,18 +205,20 @@ def filter_info(agg_data, workingClass: ci):
                 and isBefore(class_data["End time"], end_prefer)
             )
             # Check Days
-            and (days.contains(class_data["Days"]))
-            or (class_data["ID"] in ID_list)
+            and (class_data["Days"] in days)
+            or (ID_list is not None and class_data["ID"] in ID_list)
         ):
             returned_ids.append(
                 {
-                    "ID": class_data["Class_ID"],
-                    "Professors": class_data["Professors"],
-                    "Start time": class_data["Start_time"],
-                    "End time": class_data["End_time"],
+                    "ID": class_data["ID"],
+                    "Professors": class_data["Instructor"],
+                    "Start time": class_data["Start time"],
+                    "End time": class_data["End time"],
                     "Days": class_data["Days"],
                 }
             )
+
+    return returned_ids
 
 
 def isAfter(input_time: str, target: datetime):
