@@ -13,15 +13,23 @@ def main():
     url_list = []
 
     # puts url variables in scope for efficiency
-    for course in cc.class_list:
-        url_list.append(
-            wi2.get_search_url(
-                course.subj,
-                course.nbr,
-                course.location.upper(),
-                course.session,
+    if cc.search_method == "class_list":
+        for course in cc.class_list:
+            url_list.append(
+                wi2.get_search_url(
+                    course.subj,
+                    course.nbr,
+                    course.location.upper(),
+                    course.session,
+                )
             )
-        )
+    elif cc.search_method == "id_list":
+        for id in cc.id_list:
+            url_list.append(
+                wi2.url_from_id(id)
+            )
+    else:
+        raise Exception("Invalid search method. Check const_config.py's search_method")
 
     previous_lists = [[] for i in range(len(cc.class_list))]
 
