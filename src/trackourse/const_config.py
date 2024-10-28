@@ -10,11 +10,10 @@ class_info format:
     nbr: class number (eg. ENG [101])
     session: A, B, C sessions
     professor_list: If you have any preferred professors
-    location: Campus, put the code in caps. [TEMPE, DTPHX, ICOURSE, POLY]
-    start: earliest you want to go to class
+    location: Campus, put the code in caps: "TEMPE", "DTPHX", "ICOURSE", "POLY"
+    start: earliest you want to go to class (Should be in the format XX:XXPM or XX:XXAM)
     end: preferred end time if you don't want a class to go past a certain time
-    id_list: specific class IDs you may want. These are 5 digit numbers
-    days: days of the week you want; "M W", "M W F", "T Th" are common ones
+    id_list: specific class IDs you may want. eg. ['12345', '98765', '45678']
 
 """
 # Set according to method you want: "email", "sms", "both"
