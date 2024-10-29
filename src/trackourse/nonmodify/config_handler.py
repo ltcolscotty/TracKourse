@@ -4,6 +4,10 @@ import sys
 
 
 def get_config_path():
+    """Gets the configuration math for the ini file
+    Returns:
+        os.path: OS path to trackourse_config.ini
+    """
     if getattr(sys, "frozen", False):
         base_dir = os.path.dirname(sys.executable)
     else:
@@ -13,6 +17,21 @@ def get_config_path():
 
 
 def read_config():
+    """Reads configuration and puts it in a dictionary format for accessing
+    Returns:
+        dict: reference for constant config
+            ```python
+            "notif_method": notification method
+            "url_year": url year for url search
+            "wait_time": wait time in seconds
+            "id_list": ID list
+            "sender_email": sender email for gateway or notification
+            "sender_password": sender email password
+            "target_email": email for notifications to be sent to
+            "phone_number": gateway phone number
+            "carrier": phone carrier
+            ```
+    """
     config_path = get_config_path()
     print(f"Config path: {config_path}")  # Debugging line
     config = configparser.ConfigParser()

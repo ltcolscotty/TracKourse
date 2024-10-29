@@ -3,6 +3,7 @@ import trackourse.const_config as cc
 
 
 def ping():
+    """Tests notification methods"""
     match cc.notif_method:
         case "sms":
             ah.send_sms("SMS Ping Test Success", "NotifyRegisterASU")

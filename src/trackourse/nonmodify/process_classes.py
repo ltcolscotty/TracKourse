@@ -127,6 +127,13 @@ def standardize(input):
 
 
 def process_class(input_string):
+    """puts one class into a dictionary information format
+    Args:
+        input_string: str - one class's standardized information
+    
+    Returns:
+        dict: one dictionary entry for the input class
+    """
     lines = input_string.strip().split("\n")
 
     if len(lines) != 5:
