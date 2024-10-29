@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from email.message import EmailMessage
 import smtplib
 
-import const_config as cc
+import trackourse.const_config as cc
 
 # Load environment variables from .env file
 load_dotenv()

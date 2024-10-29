@@ -1,4 +1,4 @@
-from nonmodify.class_info import class_info
+from trackourse.nonmodify.class_info import class_info
 
 """
 This file should contain:
@@ -39,7 +39,7 @@ class_list = [
 ]
 
 # should be a list of strings, eg. ['12345', '98765', '45678']
-id_list = []
+id_list = ['12275', '34686', '21121']
 
 # Options: class_list, id_list
 search_method = "class_list"
