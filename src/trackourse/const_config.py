@@ -1,4 +1,4 @@
-from nonmodify.class_info import class_info
+from src.trackourse.nonmodify.class_info import class_info
 
 """
 This file should contain:
