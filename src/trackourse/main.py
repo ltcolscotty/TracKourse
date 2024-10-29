@@ -18,11 +18,13 @@ def main():
         previous_lists = [[] for i in range(len(cc.id_list))]
 
     with sync_playwright() as p:
+        
+        browser = p.chromium.launch(headless=True, channel="chrome")
+        context = browser.new_context(no_viewport=True)
+        page = context.new_page()
+
         try:
             while True:
-                browser = p.chromium.launch(headless=False, channel="chrome")
-                page = browser.new_page()
-
                 for index_url, url in enumerate(url_list):
                     max_retries = 3
                     retry_count = 0
