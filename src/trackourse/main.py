@@ -18,7 +18,7 @@ def main():
         previous_lists = [[] for i in range(len(cc.id_list))]
 
     with sync_playwright() as p:
-        
+
         browser = p.chromium.launch(headless=True, channel="chrome")
         context = browser.new_context(no_viewport=True)
         page = context.new_page()

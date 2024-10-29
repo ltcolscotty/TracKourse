@@ -1,6 +1,5 @@
 """Handles alert operations"""
 
-import os
 from email.message import EmailMessage
 import smtplib
 
