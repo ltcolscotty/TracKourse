@@ -1,14 +1,10 @@
 """Handles alert operations"""
 
 import os
-from dotenv import load_dotenv
 from email.message import EmailMessage
 import smtplib
 
 import trackourse.const_config as cc
-
-# Load environment variables from .env file
-load_dotenv()
 
 
 def send_sms(
@@ -25,10 +21,10 @@ def send_sms(
         smtp_port: - port, don't mess with this
     """
     # Environment variable stuff
-    sender_email = os.getenv("SENDER_EMAIL")
-    email_password = os.getenv("SENDER_PASSWORD")
-    number = os.getenv("PHONE_NUMBER")
-    provider = os.getenv("CARRIER")
+    sender_email = cc.settings["sender_email"]
+    email_password = cc.settings["sender_password"]
+    number = cc.settings["phone_number"]
+    provider = cc.settings["carrier"]
 
     # Check for missing config values
     if not all([sender_email, email_password, number, provider]):
@@ -74,9 +70,9 @@ def send_email(body, subject, is_html=False):
         subject: title
         is_html: body type
     """
-    to_email = os.getenv("TARGET_EMAIL")
-    from_email = os.getenv("SENDER_EMAIL")
-    password = os.getenv("SENDER_PASSWORD")
+    to_email = cc.settings["target_email"]
+    from_email = cc.settings["sender_email"]
+    password = cc.settings["sender_password"]
 
     msg = EmailMessage()
     msg["Subject"] = subject
