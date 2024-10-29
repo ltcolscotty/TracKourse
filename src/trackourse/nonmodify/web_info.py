@@ -1,7 +1,7 @@
 """V2 implementation serves to use playwright for faster scraping, and direct URL
 searches to reduce instances of wrong results showing up"""
 
-from playwright.sync_api import expect
+from playwright.sync_api import expect, Page
 import trackourse.const_config as cc
 
 
@@ -25,7 +25,7 @@ def get_search_url(subject, catalog_number, campus, session):
     return url
 
 
-def scan_boxes(page):
+def scan_boxes(page: Page):
     """Look through the page and scan through divs
     Args:
         page: Playwright Page
@@ -73,7 +73,7 @@ def scan_boxes(page):
         return ""
 
 
-def found_results(page, timeout=5000):
+def found_results(page: Page, timeout=5000):
     """Checks for if there are class results
     Args:
         page: playwright page
