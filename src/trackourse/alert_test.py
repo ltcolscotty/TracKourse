@@ -11,3 +11,7 @@ def ping():
         case "both":
             ah.send_email("Email Ping Test Success", "NotifyRegisterASU")
             ah.send_sms("SMS Ping Test Success", "NotifyRegisterASU")
+
+
+if __name__ == "__main__":
+    ping()
