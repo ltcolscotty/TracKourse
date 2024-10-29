@@ -37,6 +37,13 @@ Running this should:
 5. CD into src/trackourse and run the command: ```python alert_test.py```, if you recieve your messages in the specified email or phone number, you can continue
 6. CD int src/trackourse and run main.py with ```python main.py```, use ctrl+c to stop the program if you need to make adjustments to constants and rerun the program
 
+### Manual Execution Production
+- Ensure your python environment has ```pyinstaller```
+- Run the command below in the root directory of the project, and check the newly created ```dist``` folder
+```bash
+pyinstaller --onefile --add-data="trackourse_config.ini" --icon=Trackourse.ico src/trackourse/main.py
+```
+
 ## trackourse_config.ini file setup:
 
 ```notif_method``` you can set this to be: sms, email, both
