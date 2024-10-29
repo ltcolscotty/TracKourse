@@ -13,43 +13,43 @@ def test_is_before():
 
 def test_standardize_hybrid():
     testcase1 = """AAA 800
-    12345
-    Jeffery D�e
-    Multiple dates and times | 11:00 AM
+12345
+Jeffery D�e
+Multiple dates and times | 11:00 AM
 
-    � - 12:15 PM
+� - 12:15 PM
 
-    �
-    Tempe - COORL0-99
+�
+Tempe - COORL0-99
 
-    Internet - Hybrid
-    10 of 15"""
+Internet - Hybrid
+10 of 15"""
 
     testcase2 = """BBB 555
-    54321
-    Jane Doe
-    Multiple dates and times | 3:00 AM
+54321
+Jane Doe
+Multiple dates and times | 3:00 AM
 
-    � - 7:15 AM
+� - 7:15 AM
 
-    �
-    Tempe - BUILD4932
+�
+Tempe - BUILD4932
 
-    Internet - Hybrid
-    10 of 15"""
+Internet - Hybrid
+10 of 15"""
 
     testcase3 = """CCC 100
-    99999
-    Alice Bob, Bob Alice
-    Multiple dates and times | 2:00 PM
+99999
+Alice Bob, Bob Alice
+Multiple dates and times | 2:00 PM
 
-    � - 5:15 PM
+� - 5:15 PM
 
-    �
-    Tempe - WXLR555
+�
+Tempe - WXLR555
 
-    Internet - Hybrid
-    10 of 15"""
+Internet - Hybrid
+10 of 15"""
 
     assert pc.standardize_hybrid(testcase1) == """AAA 800
 12345
@@ -72,35 +72,38 @@ Hybrid | 2:00 PM - 5:15 PM
 
 def test_standardize_reg():
     testcase1 = """YYY 999
-    10101
-    J�ffery Doe
-    M W F | 12:20 PM - 1:10 PM
-    Tempe - WLSN999
-    5 of 15"""
+10101
+J�ffery Doe
+M W F | 12:20 PM - 1:10 PM
+Tempe - WLSN999
+5 of 15"""
 
     testcase2 = """ZZZ 101
-    20202
-    Jane Doe
-    T Th | 3:00 PM - 4:15 PM
-    Tempe - CRTVC000
-    13 of 15"""
+20202
+Jane Doe
+T Th | 3:00 PM - 4:15 PM
+Tempe - CRTVC000
+13 of 15"""
 
     testcase3 = """XXX 700
-    30303
-    Alice Bob, Bob Alice
-    T Th | 1:30 PM - 2:45 PM
-    Tempe - DISCVRY
-    1 of 15"""
+30303
+Alice Bob, Bob Alice
+T Th | 1:30 PM - 2:45 PM
+Tempe - DISCVRY
+1 of 15"""
 
-    assert pc.standardize_reg(testcase1) == """YYY 999 10101
+    assert pc.standardize_reg(testcase1) == """YYY 999
+10101
 Jffery Doe
 M W F | 12:20 PM - 1:10 PM
 5 of 15"""
-    assert pc.standardize_reg(testcase2) == """ZZZ 101 20202
+    assert pc.standardize_reg(testcase2) == """ZZZ 101
+20202
 Jane Doe
 T Th | 3:00 PM - 4:15 PM
 13 of 15"""
-    assert pc.standardize_reg(testcase3) == """XXX 700 30303
+    assert pc.standardize_reg(testcase3) == """XXX 700
+30303
 Alice Bob, Bob Alice
 T Th | 1:30 PM - 2:45 PM
 1 of 15"""

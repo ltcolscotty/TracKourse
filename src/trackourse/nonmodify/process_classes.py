@@ -43,12 +43,14 @@ def standardize_reg(input_data):
     for idx, line in enumerate(lines):
         cleaned_line = line.strip().replace("�", "")
         if cleaned_line:
-            if idx == 0 or "|" in cleaned_line or "of 15" in cleaned_line:
+            if idx == 0 or idx == 1:
                 standardized_lines.append(cleaned_line)
-            elif idx == 2:  # Instructor name
+            elif idx == 2:
                 standardized_lines.append(cleaned_line)
-            elif "Tempe" not in cleaned_line:
-                standardized_lines[-1] += " " + cleaned_line
+            elif "|" in cleaned_line:
+                standardized_lines.append(cleaned_line)
+            elif "of 15" in cleaned_line:
+                standardized_lines.append(cleaned_line)
 
     return "\n".join(standardized_lines)
 
