@@ -13,23 +13,9 @@ def main():
     url_list = []
     previous_lists = []
     # puts url variables in scope for efficiency
-    if cc.search_method == "class_list":
-        for course in cc.class_list:
-            url_list.append(
-                wi2.get_search_url(
-                    course.subj,
-                    course.nbr,
-                    course.location.upper(),
-                    course.session,
-                )
-            )
-        previous_lists = [[] for i in range(len(cc.class_list))]
-    elif cc.search_method == "id_list":
-        for id in cc.id_list:
-            url_list.append(wi2.url_from_id(id))
+    for id in cc.id_list:
+        url_list.append(wi2.url_from_id(id))
         previous_lists = [[] for i in range(len(cc.id_list))]
-    else:
-        raise Exception("Invalid search method. Check const_config.py's search_method")
 
     with sync_playwright() as p:
         try:
@@ -46,13 +32,9 @@ def main():
 
                             # Get information found
                             if wi2.found_results(page):
-                                print(
-                                    f"Log: Open results for {cc.class_list[index_url].fullcode}"
-                                )
+                                print(f"Log: Open results for {cc.id_list[index_url]}")
                                 result_list = wi2.scan_boxes(page)
-                                result_list = pc2.standardize(
-                                    result_list, cc.class_list[index_url]
-                                )
+                                result_list = pc2.standardize(result_list)
 
                                 # Process each course
                                 for index_course, course in enumerate(result_list):
@@ -61,7 +43,7 @@ def main():
                                     )
 
                                 result_list = pc2.filter_info(
-                                    result_list, cc.class_list[index_url]
+                                    result_list, cc.id_list[index_url]
                                 )
 
                                 new_classes = pc2.compare_results(
@@ -75,7 +57,7 @@ def main():
                                     print("No new status updates")
                             else:
                                 print(
-                                    f"Log: No open results for {cc.class_list[index_url].fullcode}"
+                                    f"Log: No open results for {cc.id_list[index_url]}"
                                 )
 
                             break  # Exit the retry loop if successful
@@ -83,13 +65,13 @@ def main():
                         except PlaywrightTimeoutError:
                             retry_count += 1
                             print(
-                                f"Timeout occurred for {cc.class_list[index_url].fullcode}. Retrying... (Attempt {retry_count}/{max_retries})"
+                                f"Timeout occurred for {cc.id_list[index_url]}. Retrying... (Attempt {retry_count}/{max_retries})"
                             )
                             time.sleep(10)  # Wait for 10 seconds before retrying
 
                     if retry_count == max_retries:
                         print(
-                            f"Failed to load {cc.class_list[index_url].fullcode} after {max_retries} attempts. Skipping..."
+                            f"Failed to load {cc.id_list[index_url]} after {max_retries} attempts. Skipping..."
                         )
 
                 print(f"Waiting for {cc.wait_time} seconds before next check...")

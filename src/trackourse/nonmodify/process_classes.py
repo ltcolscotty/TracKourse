@@ -1,23 +1,17 @@
 import re
 from datetime import datetime
 
-from trackourse.nonmodify.class_info import class_info as ci
 
-
-def group_class_strings(class_string, full_code):
+def group_class_strings(class_string):
     """Groups classes together
     Args:
         class_string: str - unprocessed string
-        full_code: str - current class code (Eg. MAT 101)
 
     Returns:
         list[str]: list of partitioned classes for standardize_reg and hybrid to standardize
     """
-    # Escape special characters in the course code for regex
-    full_code = re.escape(full_code)
-
     # Regular expression to match the entire class entry
-    pattern = rf"({full_code}\n.*?)\n(\d+ of \d+)(?=\n\n{full_code}|\Z)"
+    pattern = r"([A-Z]{3}\s\d{3}\n.*?)\n(\d+ of \d+)(?=\n\n[A-Z]{3}\s\d{3}|\Z)"
     matches = re.finditer(pattern, class_string, re.DOTALL)
 
     result = []
@@ -115,16 +109,14 @@ def is_not_hybrid(course_input):
     return True
 
 
-def standardize(input, class_info: ci):
+def standardize(input):
     """Standardizes total input
     Args:
         input: str - raw preprocessed input
-        class_info: nonmodify.class_info.class_info - current class selection
     Returns:
         list[str]: Standardized info
     """
-    info_list = group_class_strings(input, class_info.fullcode)
-    print(class_info.fullcode)
+    info_list = group_class_strings(input)
     for i, course in enumerate(info_list):
         if is_not_hybrid(course):
             info_list[i] = standardize_reg(course)
@@ -173,7 +165,7 @@ def process_class(input_string):
     return result
 
 
-def filter_info(agg_data, workingClass: ci):
+def filter_info(agg_data, ID_list):
     """Processes dictionary data
     Args:
         agg_data: Dict - processed data in dictionary format
@@ -181,35 +173,10 @@ def filter_info(agg_data, workingClass: ci):
     Returns:
         list[int] - class codes that match and have spots
     """
-    # unpack info for quick reference
-    class_code = workingClass.fullcode
-    professors = workingClass.professor_list
-    start_prefer = workingClass.start
-    end_prefer = workingClass.end
-    days = workingClass.days
-    ID_list = workingClass.id
 
     returned_ids = []
     for class_data in agg_data:
-        if (
-            # Verify class code
-            (class_data["Course"] == class_code)
-            # Check for spots left
-            and (class_data["Open"])
-            # Check professors
-            and (
-                (not professors)
-                or (prof in workingClass["Professors"] for prof in professors)
-            )
-            # Check time
-            and (
-                isAfter(class_data["Start time"], start_prefer)
-                and isBefore(class_data["End time"], end_prefer)
-            )
-            # Check Days
-            and (class_data["Days"] in days)
-            or (ID_list is not None and class_data["ID"] in ID_list)
-        ):
+        if ID_list is not None and class_data["ID"] in ID_list:
             returned_ids.append(
                 {
                     "ID": class_data["ID"],
