@@ -1,7 +1,7 @@
 import re
 from datetime import datetime
 
-from src.trackourse.nonmodify.class_info import class_info as ci
+from nonmodify.class_info import class_info as ci
 
 
 def group_class_strings(class_string, full_code):
