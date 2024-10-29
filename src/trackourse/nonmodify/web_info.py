@@ -5,26 +5,6 @@ from playwright.sync_api import expect, Page
 import trackourse.const_config as cc
 
 
-def get_search_url(subject, catalog_number, campus, session):
-    """Gets filtered URL based on inputs
-    Args:
-        subject: str - Subject (eg. [MAT] xxx)
-        catalog_number: str - catalog number (eg. xxx [101])
-        campus: str - all caps campus location (eg. ICOURSE, TEMPE)
-        session: str - A, B, or C
-        term: str - 2251, broken down into (2xxx - default, x25x - year (eg 2025 -> x25x), xxx1 (Semester))
-
-    Returns:
-        str: URL to access
-    """
-    base_url = "https://catalog.apps.asu.edu/catalog/classes/classlist"
-    url = (
-        f"{base_url}?campus={campus}&campusOrOnlineSelection=C&catalogNbr={catalog_number}"
-        f"&honors=F&promod=F&searchType=open&session={session}&subject={subject}&term={cc.url_year}"
-    )
-    return url
-
-
 def scan_boxes(page: Page):
     """Look through the page and scan through divs
     Args:
