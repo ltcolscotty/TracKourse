@@ -23,6 +23,12 @@ Running this should:
 - (2025) Proper hybrid class handling
 - (2025) Package implementation for easy download and usage
 
+## Executable Distribution setup
+- Ensure ```trackourse_config.ini``` is in the same folder as alert_tester and main
+- Set up ```trackourse_config.ini``` using the instructions provided below
+- Ensure you get pinged when you run alert_tester, if you don't recieve messages, something might be wrong
+- Run main once you have your desired classes and notification methods set up
+
 ## Manual program setup
 
 1. Set up a python environment and run ```pip install -r requirements.txt```
