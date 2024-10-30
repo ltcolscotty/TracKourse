@@ -53,7 +53,7 @@ def read_config():
         "target_email": config.get("settings", "TARGET_EMAIL"),
         "phone_number": config.get("settings", "PHONE_NUMBER"),
         "carrier": config.get("settings", "CARRIER"),
-        "dev_mode": config.getboolean("settings", "dev_mode")
+        "dev_mode": config.getboolean("settings", "dev_mode"),
     }
 
     return settings

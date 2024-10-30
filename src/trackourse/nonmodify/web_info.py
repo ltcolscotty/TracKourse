@@ -101,9 +101,10 @@ def found_results(page: Page, timeout=5000):
         expect(no_classes_message).to_be_visible()
         return False
     else:
-        raise Exception(
+        print(
             "Unexpected state: Neither class accordions nor 'No classes found' message were present"
         )
+        return False
 
 
 def url_from_id(id):

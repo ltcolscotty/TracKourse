@@ -12,7 +12,6 @@ import trackourse.nonmodify.logger_helper as lh
 import trackourse.const_config as cc
 
 
-
 def main():
     url_list = []
     previous_lists = []
@@ -23,7 +22,9 @@ def main():
 
     with sync_playwright() as p:
 
-        browser = p.chromium.launch(headless=(not cc.dev_mode), channel="chrome", args=["--start-maximized"])
+        browser = p.chromium.launch(
+            headless=(not cc.dev_mode), channel="chrome", args=["--start-maximized"]
+        )
         context = browser.new_context(viewport=None, no_viewport=True)
         page = context.new_page()
 
@@ -38,9 +39,16 @@ def main():
 
                             # Get information found
                             if wi2.found_results(page):
-                                print(f"Log: Open results for {cc.id_list[index_url]}")
+                                if cc.dev_mode:
+                                    print(
+                                        f"Log: Open results for {cc.id_list[index_url]}"
+                                    )
+
                                 result_list = wi2.scan_boxes(page)
                                 result_list = pc2.standardize(result_list)
+
+                                if cc.dev_mode:
+                                    print(f"Result list pre-process: {result_list}")
 
                                 # Process each course
                                 for index_course, course in enumerate(result_list):
@@ -48,14 +56,21 @@ def main():
                                         course
                                     )
 
-                                result_list = pc2.filter_info(
-                                    result_list, cc.id_list[index_url]
-                                )
+                                if cc.dev_mode:
+                                    print(f"Result list pre-filter: {result_list}")
+
+                                result_list = pc2.filter_info(result_list, cc.id_list)
+
+                                if cc.dev_mode:
+                                    print(f"Result list: {result_list}")
 
                                 new_classes = pc2.compare_results(
                                     previous_lists[index_url], result_list
                                 )
                                 previous_lists[index_url] = result_list
+
+                                if cc.dev_mode:
+                                    print(f"New classes: {new_classes}")
 
                                 if new_classes is not None:
                                     alerter.send_alerts(new_classes)
@@ -82,13 +97,13 @@ def main():
 
                 print(f"Waiting for {cc.wait_time} seconds before next check...")
                 time.sleep(cc.wait_time)
-                browser.close()
 
         except KeyboardInterrupt:
             print("\nProgram stopped by user")
         except Exception:
             if cc.dev_mode:
                 lh.write_file("latest_error.txt", traceback.format_exc())
+                input("Press enter to close")
             else:
                 pass
         finally:

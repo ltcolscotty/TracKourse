@@ -1,6 +1,21 @@
 import re
 from datetime import datetime
 
+import trackourse.const_config as cc
+
+
+def remove_extra_newlines(uncleaned: str):
+    """Removes extra newline characters
+    Args:
+        uncleaned: str
+
+    Returns:
+        str: removed extra newline characters
+    """
+    lines = uncleaned.split("\n")
+    non_empty_lines = [line for line in lines if line.strip()]
+    return "\n".join(non_empty_lines)
+
 
 def group_class_strings(class_string):
     """Groups classes together
@@ -11,7 +26,9 @@ def group_class_strings(class_string):
         list[str]: list of partitioned classes for standardize_reg and hybrid to standardize
     """
     # Regular expression to match the entire class entry
-    pattern = r"([A-Z]{3}\s\d{3}\n.*?)\n(\d+ of \d+)(?=\n\n[A-Z]{3}\s\d{3}|\Z)"
+    class_string = remove_extra_newlines(class_string)
+
+    pattern = r"([A-Z0-9]{3}\s\d{3}[A-Z]?\n.*?)\n(\d+ of \d+)(?=\n\n[A-Z0-9]{3}\s\d{3}[A-Z]?|\Z)"
     matches = re.finditer(pattern, class_string, re.DOTALL)
 
     result = []
@@ -43,7 +60,7 @@ def standardize_reg(input_data):
                 standardized_lines.append(cleaned_line)
             elif "|" in cleaned_line:
                 standardized_lines.append(cleaned_line)
-            elif "of 15" in cleaned_line:
+            elif re.search(r"\d+ of \d+", cleaned_line):
                 standardized_lines.append(cleaned_line)
 
     return "\n".join(standardized_lines)
@@ -57,6 +74,10 @@ def standardize_hybrid(input_data):
     Returns:
         str: standardized format string
     """
+
+    if cc.dev_mode:
+        print("Standardizing hybrid class")
+
     lines = input_data.split("\n")
     corrected_lines = []
 
@@ -95,12 +116,6 @@ def is_not_hybrid(course_input):
     if len(lines) != 6:
         return False
 
-    time_pattern = (
-        r"^[MTWRFS]+\s+\|\s+\d{1,2}:\d{2}\s+[AP]M\s+-\s+\d{1,2}:\d{2}\s+[AP]M$"
-    )
-    if not re.match(time_pattern, lines[3].strip()):
-        return False
-
     # Check if the location doesn't contain "Internet - Hybrid"
     if "Internet - Hybrid" in lines[4]:
         return False
@@ -116,7 +131,11 @@ def standardize(input):
     Returns:
         list[str]: Standardized info
     """
+
     info_list = group_class_strings(input)
+
+    print(f"Info List: {info_list}")
+
     for i, course in enumerate(info_list):
         if is_not_hybrid(course):
             info_list[i] = standardize_reg(course)
