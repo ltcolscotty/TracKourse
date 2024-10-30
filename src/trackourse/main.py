@@ -1,4 +1,5 @@
 import time
+import traceback
 
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
 
@@ -6,7 +7,10 @@ import trackourse.nonmodify.web_info as wi2
 import trackourse.nonmodify.process_classes as pc2
 import trackourse.nonmodify.alert_handler as alerter
 
+import trackourse.nonmodify.logger_helper as lh
+
 import trackourse.const_config as cc
+
 
 
 def main():
@@ -19,8 +23,8 @@ def main():
 
     with sync_playwright() as p:
 
-        browser = p.chromium.launch(headless=True, channel="chrome")
-        context = browser.new_context(no_viewport=True)
+        browser = p.chromium.launch(headless=(not cc.dev_mode), channel="chrome", args=["--start-maximized"])
+        context = browser.new_context(viewport=None, no_viewport=True)
         page = context.new_page()
 
         try:
@@ -82,6 +86,11 @@ def main():
 
         except KeyboardInterrupt:
             print("\nProgram stopped by user")
+        except Exception:
+            if cc.dev_mode:
+                lh.write_file("latest_error.txt", traceback.format_exc())
+            else:
+                pass
         finally:
             if "browser" in locals():
                 browser.close()

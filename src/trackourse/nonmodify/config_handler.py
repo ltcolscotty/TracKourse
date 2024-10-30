@@ -30,6 +30,7 @@ def read_config():
             "target_email": email for notifications to be sent to
             "phone_number": gateway phone number
             "carrier": phone carrier
+            "dev_mode": Developer mode
             ```
     """
     config_path = get_config_path()
@@ -52,6 +53,7 @@ def read_config():
         "target_email": config.get("settings", "TARGET_EMAIL"),
         "phone_number": config.get("settings", "PHONE_NUMBER"),
         "carrier": config.get("settings", "CARRIER"),
+        "dev_mode": config.getboolean("settings", "dev_mode")
     }
 
     return settings
