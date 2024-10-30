@@ -62,7 +62,7 @@ def send_sms(
         print(f"Failed to send SMS: {str(e)}")
 
 
-def send_email(body, subject, is_html=False):
+def send_email(body, subject="TracKourse Notification", is_html=False):
     """Sends email to configured email address
     Args:
         body: body of email content
