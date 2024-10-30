@@ -21,8 +21,9 @@ Running this should:
 - Windows 10/11
 
 ## To-Do:
-- (2025) Proper hybrid class handling
-- (2025) Headless browser implementation
+- (2025) - v1.1.0 Proper hybrid class handling to deliver specific days
+- (2025) - v2.0.0 Headless browser implementation
+- (2025) - v2.0.0 Proper program UI
 
 ## Executable Distribution setup
 - Ensure ```trackourse_config.ini``` is in the same folder as alert_tester and TracKourse
@@ -30,26 +31,27 @@ Running this should:
 - Ensure you get pinged when you run alert_tester, if you don't recieve messages, something might be wrong
 - Run TracKourse once you have your desired classes and notification methods set up
 - A command terminal and chrome window should open up. Once you see these, the program will automatically start and you can leave it as is. It is advised to use a home computer or something not public while running this program.
-- To stop the program to adjust settings or because you are done, hit ```ctrl+C``` in the terminal window.
+- To stop the program to adjust settings or because you are done, hit ```ctrl+c``` in the terminal window.
 
 ## Manual program setup
 
 1. Set up a python environment and run ```pip install -r requirements.txt```
 2. Run to install playwright tools ```playwright install```
 3. Set up ```trackourse_config.ini``` with the classes that are desired
-5. CD into src/trackourse and run the command: ```python alert_test.py```, if you recieve your messages in the specified email or phone number, you can continue
-6. CD int src/trackourse and run main.py with ```python main.py```, use ctrl+c to stop the program if you need to make adjustments to constants and rerun the program
+5. Cd into src/trackourse and run the command: ```python alert_test.py```, if you recieve your messages in the specified email or phone number, you can continue
+6. Cd into src/trackourse and run main.py with ```python main.py```, use ctrl+c to stop the program if you need to make adjustments to constants and rerun the program
 
 ### Manual Execution Production
 - Ensure your python environment has ```pyinstaller```
 - Run the command below in the root directory of the project, and check the newly created ```dist``` folder
 ```bash
 pyinstaller --onefile --add-data="trackourse_config.ini" --icon=Trackourse.ico src/trackourse/main.py
+pyinstaller --onefile --add-data="trackourse_config.ini" --icon=Trackourse.ico src/trackourse/alert_test.py
 ```
 
 ## trackourse_config.ini file setup:
 
-```notif_method``` you can set this to be: sms, email, both. It would be advisable to set this as both because the sms method is heavily dependent on the carrier's sms gateway and gmail is more consistent.
+```notif_method``` you can set this to be: ```sms```, ```email```, ```both```. It would be advisable to set this as ```both``` because the sms method is heavily dependent on the carrier's sms gateway and gmail is more consistent.
 
 ```url_year``` Set this to be class search's last 4 digits in the url. This can also be broken down as 2xxx where 2 is default, x25x as in the year, and xxx1 where 1 is spring, 7 is fall. An example: 2027 fall is expected to be 2277, or 2030 spring is expected to be 2301.
 
@@ -98,7 +100,7 @@ CARRIER=att
 
 ## Curious about how this works?
 Most of the main code uses default python packages, with the exception of these packages<br>
-- Webscraping tool: ``Playwright``
+- Webscraping tool: ```playwright```
 - Message Sending: ```smtplib```
 
 Copyright © Aidan Yung

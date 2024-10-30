@@ -1,6 +1,6 @@
 [project]
 name = "TracKourseASU"
-version = "0.1.0"
+version = "1.0.0"
 description = "Registration course tracker for ASU"
 authors = [
     {name = "Aidan Yung", email = "ltcolscotty@gmail.com"},
