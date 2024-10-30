@@ -21,13 +21,15 @@ Running this should:
 
 ## To-Do:
 - (2025) Proper hybrid class handling
-- (2025) Package implementation for easy download and usage
+- (2025) Headless browser implementation
 
 ## Executable Distribution setup
 - Ensure ```trackourse_config.ini``` is in the same folder as alert_tester and main
 - Set up ```trackourse_config.ini``` using the instructions provided below
 - Ensure you get pinged when you run alert_tester, if you don't recieve messages, something might be wrong
 - Run main once you have your desired classes and notification methods set up
+- A command terminal and chrome window should open up. Once you see these, the program will automatically start and you can leave it as is. It is advised to use a home computer or something not public while running this program.
+- To stop the program to adjust settings or because you are done, hit ```ctrl+C``` in the terminal window.
 
 ## Manual program setup
 

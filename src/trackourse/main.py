@@ -23,7 +23,7 @@ def main():
     with sync_playwright() as p:
 
         browser = p.chromium.launch(
-            headless=(not cc.dev_mode), channel="chrome", args=["--start-maximized"]
+            headless=False, channel="chrome", args=["--start-maximized"]
         )
         context = browser.new_context(viewport=None, no_viewport=True)
         page = context.new_page()
