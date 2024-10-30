@@ -1,5 +1,6 @@
 # TracKourseASU
-Project for automating seat monitoring for courses during registering for asu
+Project for automating seat monitoring for courses during registering for asu <br>
+https://github.com/ltcolscotty/TracKourse
 
 The goal of this project:
 Periodically scan through desired class codes. This project assumes the student has done their due dilligence on what classes they are qualified to take and that they've planned out their schedule.
@@ -24,10 +25,10 @@ Running this should:
 - (2025) Headless browser implementation
 
 ## Executable Distribution setup
-- Ensure ```trackourse_config.ini``` is in the same folder as alert_tester and main
+- Ensure ```trackourse_config.ini``` is in the same folder as alert_tester and TracKourse
 - Set up ```trackourse_config.ini``` using the instructions provided below
 - Ensure you get pinged when you run alert_tester, if you don't recieve messages, something might be wrong
-- Run main once you have your desired classes and notification methods set up
+- Run TracKourse once you have your desired classes and notification methods set up
 - A command terminal and chrome window should open up. Once you see these, the program will automatically start and you can leave it as is. It is advised to use a home computer or something not public while running this program.
 - To stop the program to adjust settings or because you are done, hit ```ctrl+C``` in the terminal window.
 
@@ -48,7 +49,7 @@ pyinstaller --onefile --add-data="trackourse_config.ini" --icon=Trackourse.ico s
 
 ## trackourse_config.ini file setup:
 
-```notif_method``` you can set this to be: sms, email, both
+```notif_method``` you can set this to be: sms, email, both. It would be advisable to set this as both because the sms method is heavily dependent on the carrier's sms gateway and gmail is more consistent.
 
 ```url_year``` Set this to be class search's last 4 digits in the url. This can also be broken down as 2xxx where 2 is default, x25x as in the year, and xxx1 where 1 is spring, 7 is fall. An example: 2027 fall is expected to be 2277, or 2030 spring is expected to be 2301.
 
