@@ -2,7 +2,7 @@
   "name": "trackourse",
   "version": "1.0.0",
   "description": "hallo",
-  "main": "\"main.js\"",
+  "main": "main.js",
   "scripts": {
     "start": "electron .",
     "dev": "nodemon --exec npx electron .",
