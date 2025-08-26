@@ -2,9 +2,7 @@ import sys
 from PySide6.QtWidgets import *
 from PySide6.QtCore import *
 
-#Check out pyqt-frameless-window
-
-import sys
+from pyqt_frameless_window import FramelessWidget
 
 class MainWindow(QWidget):
     def __init__(self):
