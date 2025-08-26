@@ -1,3 +1,4 @@
 playwright == 1.48.0
 pytest == 8.3.3
 pyside6 == 6.9.2
+pysidesix-frameless-window == 0.7.3
