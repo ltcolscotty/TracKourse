@@ -2,7 +2,7 @@ import sys
 from PySide6.QtWidgets import *
 from PySide6.QtCore import *
 
-from BlurWindow.blurWindow import GlobalBlur
+#Check out pyqt-frameless-window
 
 import sys
 
@@ -11,8 +11,6 @@ class MainWindow(QWidget):
         super().__init__()
 
         self.resize(500, 400)
-
-        GlobalBlur(self.winId(), hexColor=False, Dark=True, Acrylic=False,QWidget=self)
 
         self.setWindowTitle("TracKourse")
         # button = QPushButton("Ding")
