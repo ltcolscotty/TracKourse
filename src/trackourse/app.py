@@ -2,12 +2,9 @@ import sys
 from PySide6.QtWidgets import *
 from PySide6.QtCore import *
 
-from qframelesswindow import FramelessWindow
-
 class MainWindow(QWidget):
-    def __init__(self):
-        super().__init__()
-
+    def __init__(self, parent=None):
+        super().__init__(parent=parent)
         self.resize(500, 400)
 
         self.setWindowTitle("TracKourse")
@@ -16,7 +13,7 @@ class MainWindow(QWidget):
         # button = QPushButton("Ding")
         # self.setCentralWidget(button)
         self.setFixedSize(QSize(400, 300))
-        self.setWindowOpacity(0.8)
+        self.setWindowOpacity(0.95)
 
 app = QApplication(sys.argv)
 window = MainWindow()
