@@ -16,7 +16,9 @@ def get_current_classes():
     pass
 
 def add_class(id: str):
-
+    """
+    Adds class to INI file
+    """
     pass
 
 def remove_class(id: str):

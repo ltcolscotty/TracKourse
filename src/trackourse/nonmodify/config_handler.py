@@ -2,8 +2,7 @@ import configparser
 import os
 import sys
 
-
-def get_config_path():
+def get_config_path(file_path="trackourse_config.ini"):
     """Gets the configuration math for the ini file
     Returns:
         os.path: OS path to trackourse_config.ini
@@ -13,7 +12,11 @@ def get_config_path():
     else:
         base_dir = os.path.dirname(__file__)
 
-    return os.path.join(base_dir, "trackourse_config.ini")
+    return os.path.join(base_dir, file_path)
+
+
+def path_exists(path):
+    return os.path.exists(path)
 
 
 def read_config():
@@ -36,6 +39,10 @@ def read_config():
     config_path = get_config_path()
     print(f"Config path: {config_path}")  # Debugging line
     config = configparser.ConfigParser()
+
+    if not os.path.exists(config_path):
+        Warning("Config_handler: Path to config does not exist")
+
     config.read(config_path)
 
     if not config.sections():
@@ -57,3 +64,16 @@ def read_config():
     }
 
     return settings
+
+def write_config(field, new_data):
+    """
+    Modifies settings of config file
+    """
+    pass
+
+
+def new_config():
+    """
+    Creates new config file with blank information
+    """
+    pass
