@@ -5,9 +5,31 @@ from PySide6.QtGui import *
 
 from nonmodify.frontend_helper import *
 
+
+def createClassListing(ID) -> QWidget:
+
+    widget = QWidget()
+    layout = QGridLayout(widget)
+
+    text = QLabel(str(ID))
+    removeButton = QPushButton("Remove")
+    layout.addWidget(text, 1, 1)
+    layout.addWidget(removeButton, 1, 2)
+
+    return widget
+
+
 class CurrentList(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent=parent)
+
+        layout = QStackedLayout(self)
+        self.setStyleSheet("border: 2px solid white; border-radius: 5px;")
+        classes = get_current_classes()
+        for classCode in classes:
+            newLine = createClassListing(classCode)
+            layout.addWidget(newLine)
+
 
 class MainWindow(QWidget):
     def __init__(self, parent=None):
@@ -24,12 +46,13 @@ class MainWindow(QWidget):
         layout.addWidget(class_code_field, 1, 2)
         layout.addWidget(class_code_submit, 1, 3)
         self.setWindowTitle("TracKourse")
-        self.setWindowIcon(QIcon('Trackourse.ico'))
+        self.setWindowIcon(QIcon("Trackourse.ico"))
 
         # button = QPushButton("Ding")
         # self.setCentralWidget(button)
         self.setFixedSize(QSize(400, 300))
         self.setWindowOpacity(0.95)
+
 
 app = QApplication(sys.argv)
 window = MainWindow()
