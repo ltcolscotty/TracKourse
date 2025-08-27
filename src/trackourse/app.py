@@ -3,6 +3,12 @@ from PySide6.QtWidgets import *
 from PySide6.QtCore import *
 from PySide6.QtGui import *
 
+from nonmodify.frontend_helper import *
+
+class CurrentList(QWidget):
+    def __init__(self, parent=None):
+        super().__init__(parent=parent)
+
 class MainWindow(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent=parent)
