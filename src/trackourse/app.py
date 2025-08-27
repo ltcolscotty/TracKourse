@@ -1,6 +1,7 @@
 import sys
 from PySide6.QtWidgets import *
 from PySide6.QtCore import *
+from PySide6.QtGui import *
 
 class MainWindow(QWidget):
     def __init__(self, parent=None):
@@ -16,9 +17,8 @@ class MainWindow(QWidget):
         layout.addWidget(class_code_label, 1, 1)
         layout.addWidget(class_code_field, 1, 2)
         layout.addWidget(class_code_submit, 1, 3)
-
         self.setWindowTitle("TracKourse")
-        # self.setWindowIcon('WillGetToLater')
+        self.setWindowIcon(QIcon('Trackourse.ico'))
 
         # button = QPushButton("Ding")
         # self.setCentralWidget(button)
