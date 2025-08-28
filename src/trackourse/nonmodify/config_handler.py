@@ -4,6 +4,7 @@ import sys
 
 config = configparser.ConfigParser()
 
+
 def get_config_path(file_path="trackourse_config.ini"):
     """Gets the configuration math for the ini file
     Returns:
@@ -65,6 +66,7 @@ def read_config():
     }
 
     return settings
+
 
 def write_config(field, new_data):
     """

@@ -20,6 +20,8 @@ def main():
         url_list.append(wi2.url_from_id(id))
         previous_lists = [[] for i in range(len(cc.id_list))]
 
+    wi2.set_main_status(True)
+
     with sync_playwright() as p:
 
         browser = p.chromium.launch(
@@ -107,6 +109,7 @@ def main():
             else:
                 pass
         finally:
+            wi2.set_main_status(False)
             if "browser" in locals():
                 browser.close()
 

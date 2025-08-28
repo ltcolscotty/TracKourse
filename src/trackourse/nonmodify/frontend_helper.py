@@ -1,4 +1,5 @@
-from trackourse.nonmodify.web_info import *
+import trackourse.nonmodify.web_info as wi
+import trackourse.nonmodify.config_handler as ch
 
 
 def verify_class(id: str) -> bool:
@@ -15,14 +16,16 @@ def verify_class(id: str) -> bool:
 
 
 def get_current_classes():
-    pass
+    settings_list = ch.read_config()
+    return settings_list["id_list"]
 
 
 def add_class(id: str):
     """
     Adds class to INI file
     """
-    pass
+    url = wi.url_from_id(id)
+    ch.write_config("id_list", id)
 
 
 def remove_class(id: str):

@@ -5,6 +5,17 @@ from playwright.sync_api import expect, Page
 import trackourse.const_config as cc
 
 
+main_active = False
+
+
+def main_is_active():
+    return main_active
+
+
+def set_main_status(b: bool):
+    main_active = b
+
+
 def scan_boxes(page: Page):
     """Look through the page and scan through divs
     Args:
