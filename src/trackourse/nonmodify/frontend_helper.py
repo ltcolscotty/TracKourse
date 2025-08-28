@@ -1,5 +1,8 @@
-import trackourse.nonmodify.web_info as wi
-import trackourse.nonmodify.config_handler as ch
+from trackourse.nonmodify import web_info as wi
+from trackourse.nonmodify import config_handler as ch
+
+#import trackourse.nonmodify.web_info as wi
+#import trackourse.nonmodify.config_handler as ch
 
 
 def verify_class(id: str) -> bool:
