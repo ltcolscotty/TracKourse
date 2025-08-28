@@ -24,6 +24,11 @@ def add_class(id: str):
     """
     Adds class to INI file
     """
+    if wi.main_active():
+        print("Main module is active! Cannot perform modifications while main module is active.")
+        return
+
+
     url = wi.url_from_id(id)
     ch.write_config("id_list", id)
 
@@ -32,6 +37,9 @@ def remove_class(id: str):
     """
     Removes class from ini file if it exists
     """
+    if wi.main_active():
+        print("Main module is active! Cannot perform modifications while main module is active.")
+        return
     pass
 
 
