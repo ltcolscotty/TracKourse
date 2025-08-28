@@ -6,6 +6,7 @@ import trackourse.const_config as cc
 
 
 main_active = False
+BASE_URL = "https://catalog.apps.asu.edu/catalog/classes/classlist"
 
 
 def main_is_active():
@@ -126,6 +127,5 @@ def url_from_id(id):
     Returns:
         url: str - URL to check results for
     """
-    base_url = "https://catalog.apps.asu.edu/catalog/classes/classlist"
-    url = f"{base_url}?campusOrOnlineSelection=C&honors=F&keywords=%20{id}&promod=F&searchType=open&term={cc.url_year}"
+    url = f"{BASE_URL}?campusOrOnlineSelection=C&honors=F&keywords=%20{id}&promod=F&searchType=open&term={cc.url_year}"
     return url

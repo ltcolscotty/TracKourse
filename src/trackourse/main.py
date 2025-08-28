@@ -15,7 +15,6 @@ import trackourse.const_config as cc
 def main():
     url_list = []
     previous_lists = []
-    # puts url variables in scope for efficiency
     for id in cc.id_list:
         url_list.append(wi2.url_from_id(id))
         previous_lists = [[] for i in range(len(cc.id_list))]
