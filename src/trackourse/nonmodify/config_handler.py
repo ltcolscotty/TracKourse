@@ -20,7 +20,7 @@ def get_config_path(file_path="trackourse_config.ini"):
         config_path = os.path.join(current_dir, '..', '..', '..', file_path)
         config_path = os.path.abspath(config_path)
 
-    print(config_path)
+    # print(config_path)
     return config_path
 
 

@@ -1,10 +1,6 @@
 import sys
 import os
 
-print(f"CWD: {os.getcwd()}")
-#sys.path.append()
-print(f"PATH: {sys.path}")
-
 from PySide6.QtWidgets import *
 from PySide6.QtCore import *
 from PySide6.QtGui import *
@@ -43,7 +39,7 @@ class MainWindow(QWidget):
 
         class_code_label = QLabel(text="Class Code")
         class_code_field = QLineEdit()
-        class_code_submit = QPushButton("Submit")
+        class_code_submit = QPushButton("Add Class")
 
         layout = QGridLayout(self)
 
