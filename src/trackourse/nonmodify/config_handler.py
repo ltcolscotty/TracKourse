@@ -25,10 +25,6 @@ def get_config_path(file_path="trackourse_config.ini"):
     return config_path
 
 
-def path_exists(path):
-    return os.path.exists(path)
-
-
 def read_config():
     """Reads configuration and puts it in a dictionary format for accessing
     Returns:
@@ -83,6 +79,13 @@ def write_config(field, new_data):
 
 
 def make_url_year() -> str:
+    """
+    Creates year and semester formatting for the URL
+
+    Returns:
+        str: url year, eg. 2257
+    """
+
     today = date.today()
     y = str(today.year)
     m = today.month
