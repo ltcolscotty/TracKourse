@@ -1,6 +1,7 @@
 import configparser
 import os
 import sys
+from datetime import date
 
 config = configparser.ConfigParser()
 
@@ -82,7 +83,18 @@ def write_config(field, new_data):
 
 
 def make_url_year() -> str:
-    pass
+    today = date.today()
+    y = str(today.year)
+    m = today.month
+
+    if m >= 9:
+        m = 1
+    elif m >= 2:
+        m = 4
+    else:
+        m = 7
+
+    return y[0] + y[2:] + m
 
 def new_config(file_name = "trackourse_config.ini"):
     """
