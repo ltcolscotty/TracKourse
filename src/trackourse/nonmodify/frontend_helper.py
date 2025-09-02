@@ -1,6 +1,7 @@
 from nonmodify import web_info as wi
 from nonmodify import config_handler as ch
 
+
 def verify_class(id: str) -> bool:
     """
     Search to make sure class ID Exists
@@ -18,7 +19,7 @@ def verify_class(id: str) -> bool:
 def get_current_classes():
     """
     get list of current classes from config
-    
+
     Returns:
         - {string : any}
     """
@@ -31,9 +32,10 @@ def add_class(id: str):
     Adds class to INI file
     """
     if wi.main_active():
-        print("Main module is active! Cannot perform modifications while main module is active.")
+        print(
+            "Main module is active! Cannot perform modifications while main module is active."
+        )
         return
-
 
     url = wi.url_from_id(id)
     ch.write_config("id_list", id)
@@ -44,7 +46,9 @@ def remove_class(id: str):
     Removes class from ini file if it exists
     """
     if wi.main_active():
-        print("Main module is active! Cannot perform modifications while main module is active.")
+        print(
+            "Main module is active! Cannot perform modifications while main module is active."
+        )
         return
     pass
 

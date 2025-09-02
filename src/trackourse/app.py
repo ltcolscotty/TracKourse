@@ -7,6 +7,7 @@ from PySide6.QtGui import *
 
 from nonmodify.frontend_helper import *
 
+
 def createClassListing(ID) -> QWidget:
 
     widget = QWidget()

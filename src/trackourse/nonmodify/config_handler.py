@@ -18,7 +18,7 @@ def get_config_path(file_path="trackourse_config.ini"):
         config_path = os.path.join(base_dir, file_path)
     else:
         current_dir = os.path.dirname(os.path.abspath(__file__))
-        config_path = os.path.join(current_dir, '..', '..', '..', file_path)
+        config_path = os.path.join(current_dir, "..", "..", "..", file_path)
         config_path = os.path.abspath(config_path)
 
     # print(config_path)
@@ -96,24 +96,25 @@ def make_url_year() -> str:
 
     return y[0] + y[2:] + m
 
-def new_config(file_name = "trackourse_config.ini"):
+
+def new_config(file_name="trackourse_config.ini"):
     """
     Creates new config file with blank information
     """
     config["settings"] = {
-        'notif_method' : 'sms',
-        'url_year' : make_url_year(),
-        'wait_time' : '15',
-        'id_list' : '',
-        'SENDER_EMAIL': '',
-        'SENDER_PASSWORD': '',
-        'TARGET_EMAIL': '',
-        'PHONE_NUMBER': '',
-        'CARRIER': '',
-        'dev_mode': 'False'
+        "notif_method": "sms",
+        "url_year": make_url_year(),
+        "wait_time": "15",
+        "id_list": "",
+        "SENDER_EMAIL": "",
+        "SENDER_PASSWORD": "",
+        "TARGET_EMAIL": "",
+        "PHONE_NUMBER": "",
+        "CARRIER": "",
+        "dev_mode": "False",
     }
 
-    with open(file_name, 'w') as file:
+    with open(file_name, "w") as file:
         config.write(file)
-    
+
     print(f"Created file in {file_name}")
