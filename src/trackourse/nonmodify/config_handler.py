@@ -8,6 +8,11 @@ config = configparser.ConfigParser()
 
 def get_config_path(file_path="trackourse_config.ini"):
     """Gets the configuration math for the ini file
+
+    Args:
+        file_path: 
+            str - path to config file
+
     Returns:
         os.path: OS path to trackourse_config.ini
     """
@@ -103,6 +108,10 @@ def make_url_year() -> str:
 def new_config(file_name="trackourse_config.ini"):
     """
     Creates new config file with blank information
+
+    Args:
+        file_name: 
+            str - name of file
     """
     config["settings"] = {
         "notif_method": "sms",
