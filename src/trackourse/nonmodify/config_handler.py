@@ -76,9 +76,14 @@ def read_config():
     return settings
 
 
-def write_config(field, new_data):
+def write_config(field, new_data=None, adding=True):
     """
     Modifies settings of config file
+
+    Args:
+        field: field being changed
+        new_data: data to be added or removed (if applicable)
+        adding: whether or not the data is being added or removed
     """
     pass
 
