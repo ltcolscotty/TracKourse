@@ -76,7 +76,7 @@ def read_config():
     return settings
 
 
-def write_config(field, new_data=None, adding=True):
+def edit_config(field, new_data=None, adding=True):
     """
     Modifies settings of config file
 

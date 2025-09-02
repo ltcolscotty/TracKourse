@@ -38,7 +38,7 @@ def add_class(id: str):
         return
 
     url = wi.url_from_id(id)
-    ch.write_config("id_list", id)
+    ch.edit_config("id_list", id)
 
 
 def remove_class(id: str):
