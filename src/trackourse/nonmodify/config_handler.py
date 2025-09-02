@@ -81,10 +81,27 @@ def write_config(field, new_data):
     pass
 
 
-def new_config():
+def make_url_year() -> str:
+    pass
+
+def new_config(file_name = "trackourse_config.ini"):
     """
     Creates new config file with blank information
     """
-    with open("") as file:
+    config["settings"] = {
+        'notif_method' : 'sms',
+        'url_year' : make_url_year(),
+        'wait_time' : '15',
+        'id_list' : '',
+        'SENDER_EMAIL': '',
+        'SENDER_PASSWORD': '',
+        'TARGET_EMAIL': '',
+        'PHONE_NUMBER': '',
+        'CARRIER': '',
+        'dev_mode': 'False'
+    }
 
-        pass
+    with open(file_name, 'w') as file:
+        config.write(file)
+    
+    print(f"Created file in {file_name}")

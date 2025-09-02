@@ -1,13 +1,10 @@
 from nonmodify import web_info as wi
 from nonmodify import config_handler as ch
 
-#import trackourse.nonmodify.web_info as wi
-#import trackourse.nonmodify.config_handler as ch
-
-
 def verify_class(id: str) -> bool:
     """
     Search to make sure class ID Exists
+    idk if i want to do this yet
 
     Args:
         - id - class ID
@@ -19,6 +16,12 @@ def verify_class(id: str) -> bool:
 
 
 def get_current_classes():
+    """
+    get list of current classes from config
+    
+    Returns:
+        - {string : any}
+    """
     settings_list = ch.read_config()
     return settings_list["id_list"]
 
