@@ -1,4 +1,4 @@
-from trackourse.nonmodify.config_handler import read_config
+from nonmodify.config_handler import read_config
 
 settings = read_config()
 

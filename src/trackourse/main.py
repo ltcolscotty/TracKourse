@@ -3,13 +3,13 @@ import traceback
 
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
 
-import trackourse.nonmodify.web_info as wi2
-import trackourse.nonmodify.process_classes as pc2
-import trackourse.nonmodify.alert_handler as alerter
+import nonmodify.web_info as wi2
+import nonmodify.process_classes as pc2
+import nonmodify.alert_handler as alerter
 
-import trackourse.nonmodify.logger_helper as lh
+import nonmodify.logger_helper as lh
 
-import trackourse.const_config as cc
+import const_config as cc
 
 
 def main():

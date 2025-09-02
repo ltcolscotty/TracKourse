@@ -3,7 +3,7 @@
 from email.message import EmailMessage
 import smtplib
 
-import trackourse.const_config as cc
+import const_config as cc
 
 
 def send_sms(

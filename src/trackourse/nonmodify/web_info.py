@@ -2,7 +2,7 @@
 searches to reduce instances of wrong results showing up"""
 
 from playwright.sync_api import expect, Page
-import trackourse.const_config as cc
+import const_config as cc
 
 
 main_active = False

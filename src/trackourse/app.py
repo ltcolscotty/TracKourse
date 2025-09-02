@@ -1,10 +1,15 @@
 import sys
+import os
+
+print(f"CWD: {os.getcwd()}")
+#sys.path.append()
+print(f"PATH: {sys.path}")
+
 from PySide6.QtWidgets import *
 from PySide6.QtCore import *
 from PySide6.QtGui import *
 
 from nonmodify.frontend_helper import *
-
 
 def createClassListing(ID) -> QWidget:
 

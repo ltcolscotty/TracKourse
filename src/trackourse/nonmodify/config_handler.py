@@ -10,12 +10,18 @@ def get_config_path(file_path="trackourse_config.ini"):
     Returns:
         os.path: OS path to trackourse_config.ini
     """
+    config_path = ""
+
     if getattr(sys, "frozen", False):
         base_dir = os.path.dirname(sys.executable)
+        config_path = os.path.join(base_dir, file_path)
     else:
-        base_dir = os.path.dirname(__file__)
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        config_path = os.path.join(current_dir, '..', '..', '..', file_path)
+        config_path = os.path.abspath(config_path)
 
-    return os.path.join(base_dir, file_path)
+    print(config_path)
+    return config_path
 
 
 def path_exists(path):

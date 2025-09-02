@@ -1,5 +1,5 @@
-import trackourse.nonmodify.alert_handler as ah
-import trackourse.const_config as cc
+import nonmodify.alert_handler as ah
+import const_config as cc
 
 
 def ping():
